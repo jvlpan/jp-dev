@@ -1,0 +1,49 @@
+@value colors: "@/colors.css";
+@value light-teal, lime, dark-green, light-lime, dark-teal-indigo from colors;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  z-index: 2;
+  backdrop-filter: blur(10px) brightness(80%);
+  -webkit-backdrop-filter: blur(10px) brightness(80%);
+  transition: all 200ms linear;
+}
+
+.home-link {
+  transition: all 200ms linear;
+  padding: 0.25rem;
+}
+
+.home-link:hover {
+  transform: scale(1.15);
+}
+
+.logo {
+  justify-self: start;
+}
+.logo > svg {
+  height: 3rem;
+  width: 3rem;
+  pointer-events: none;
+}
+
+.nav-links a {
+  padding: 0.75rem 1rem;
+  margin: 0.5rem;
+  font-weight: 600;
+  border-radius: 0.375rem;
+  transition: all 200ms linear;
+  background-color: transparent;
+  color: light-teal;
+}
+
+.nav-links a:hover {
+  background-color: lime;
+  color: dark-teal-indigo;
+}

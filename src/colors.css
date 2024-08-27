@@ -1,0 +1,22 @@
+/* Off-white and light colors */
+@value light-teal: #ecfeff;
+@value light-blue: #d5ebee;
+@value light-lime: #cce6b3;
+
+/* Bright colors */
+@value yellow: #f9f871;
+@value lime: #accd67;
+
+/* Teal / green */
+@value silver-tree: #6bc29c;
+@value dusty-teal: #266457;
+@value green: #6ea15d;
+
+/* Dark greens */
+@value dark-teal: #204a43;
+@value leafy-green: #3e734e;
+@value sea-green: #172e3f;
+
+/* Off-black */
+@value dark-green: #1e4738;
+@value dark-teal-indigo: #0e1e1b;

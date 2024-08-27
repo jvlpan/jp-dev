@@ -1,0 +1,55 @@
+@value colors: "@/colors.css";
+@value lime from colors;
+
+.projects {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  padding: 2.5rem 3rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.project-section h2 {
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 3rem;
+  margin: 2rem;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.filter span {
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  margin: 0.25rem;
+  color: lime;
+}
+
+.error p {
+  line-height: 2rem;
+}
+
+@media (min-width: 768px) {
+  .projects {
+    width: 75%;
+  }
+  .filter {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1200px) {
+  .projects {
+    width: 80%;
+    grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+    gap: 3rem;
+  }
+}

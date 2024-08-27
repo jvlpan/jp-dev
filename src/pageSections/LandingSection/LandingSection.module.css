@@ -1,0 +1,70 @@
+@value colors: "@/colors.css";
+@value light-teal, lime, green from colors;
+
+.landing-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  color: lime;
+}
+
+.landing-banner a {
+  font-size: 1.25rem;
+  margin-bottom: 4rem;
+}
+
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("@/assets/background.jpg");
+  background-size: cover;
+  z-index: -1;
+}
+
+.transparent-gradient {
+  -webkit-mask-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(0, 0, 0, 0.9)),
+    to(rgba(0, 0, 0, 0))
+  );
+}
+
+.banner-text {
+  text-align: center;
+}
+.banner-text h1,
+.banner-text h2 {
+  font-weight: 700;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  margin: 2rem;
+}
+
+.name,
+.typewriter {
+  color: light-teal;
+}
+
+@media (min-width: 768px) {
+  .banner-text h1,
+  .banner-text h2 {
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+  .banner-text a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    border-bottom: 2px solid;
+    transition: all 150ms linear;
+  }
+  .banner-text a:hover {
+    color: green;
+  }
+}

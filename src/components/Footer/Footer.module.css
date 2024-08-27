@@ -1,0 +1,51 @@
+@value colors: "@/colors.css";
+@value lime, dark-green, dark-teal-indigo from colors;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.call-to-action {
+  margin: 1.5rem;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+}
+
+.call-to-action span {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: lime;
+  color: dark-teal-indigo;
+}
+
+.social-buttons {
+  margin: 0.15rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.social-buttons a:hover {
+  background-color: dark-green;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  transform: scale(1.15);
+}
+
+.social-buttons a {
+  border-radius: 9999px;
+  padding: 0.75rem;
+  transition: all 300ms linear;
+}
+
+.social-buttons span > svg {
+  height: 3rem;
+  width: 3rem;
+  margin: 0 auto;
+  pointer-events: none;
+}
