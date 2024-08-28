@@ -98,7 +98,7 @@ body {
 }
 
 #projects {
-  scroll-margin-top: 100px;
+  scroll-margin-top: 75px;
 }
 
 button {
@@ -150,4 +150,10 @@ button:focus-visible {
 .skip-nav-link:focus {
   left: -20px;
   transition: 1s;
+}
+
+@media (min-width: 768px) {
+  #projects {
+    scroll-margin-top: 150px;
+  }
 }

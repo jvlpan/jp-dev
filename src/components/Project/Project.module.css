@@ -6,17 +6,17 @@
   margin: 0 auto;
   background: dark-green;
   border-radius: 0.375rem;
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 0.25rem;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
 }
 
 .project-link {
   font-weight: 700;
-  padding: 0 1rem;
+  padding: 0 0.75rem;
 }
 
 .project-link a {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   transition: all 150ms linear;
   text-decoration-line: underline;
   color: lime;
@@ -31,31 +31,52 @@
 }
 
 .description {
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 1rem;
   margin: 0.5rem auto;
+  text-align: left;
 }
 
 .skills-list {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 1rem;
-  padding: 0.75rem;
+  gap: 0.25rem;
+  padding: 0 0.75rem;
+}
+
+.skills-list button {
+  padding: 0 0.25rem;
+  font-weight: 400;
+}
+
+.visit-link {
+  display: inline-block;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  border: 2px solid transparent;
+  border-radius: 0.375rem;
+  transition: border-color 0.25s;
+}
+.visit-link > svg {
+  height: 1rem;
+  width: 1rem;
+  vertical-align: middle;
+  margin-left: 0.5rem;
 }
 
 @media (min-width: 768px) {
   .project {
     width: 100%;
+    padding: 1.5rem 2rem;
   }
   .description {
-    width: 60%;
+    width: 75%;
   }
   .project-image {
     filter: grayscale(75%);
   }
   .project-link a {
-    text-size: 2.5rem;
+    font-size: 2.5rem;
     text-decoration-line: none;
     color: light-lime;
   }
@@ -66,6 +87,18 @@
   .project-link:hover .project-image {
     filter: grayscale(0);
     transform: scale(1.02);
+  }
+  .skills-list {
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .skills-list button {
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+  }
+
+  .visit-link:hover {
+    border-color: light-teal;
   }
 }
 

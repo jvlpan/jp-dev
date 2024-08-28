@@ -57,14 +57,14 @@
     font-size: 4.5rem;
     line-height: 1;
   }
-  .banner-text a {
+  .landing-banner a {
     text-decoration: none;
     font-size: 1.5rem;
     line-height: 2rem;
     border-bottom: 2px solid;
     transition: all 150ms linear;
   }
-  .banner-text a:hover {
+  .landing-banner a:hover {
     color: green;
   }
 }
