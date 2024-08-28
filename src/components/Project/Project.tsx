@@ -36,7 +36,10 @@ export default function Project({
       exit="hidden"
     >
       <h3 className={classes["project-link"]}>
-        <Link to={`/projects/${slug.toString()}`}>
+        <Link
+          to={`/projects/${slug.toString()}`}
+          title={`${title} Project Details`}
+        >
           {title}
           <img className={classes["project-image"]} alt={alt} src={img} />
         </Link>
@@ -44,13 +47,15 @@ export default function Project({
       <p className={classes.description}>{description}</p>
       <ul className={classes["skills-list"]}>
         {tags.map((tag) => (
-          <button
-            key={tag}
-            className={classes["skill-tag"]}
-            onClick={() => onTagClick(tag)}
-          >
-            {tag}
-          </button>
+          <li>
+            <button
+              key={tag}
+              className={classes["skill-tag"]}
+              onClick={() => onTagClick(tag)}
+            >
+              {tag}
+            </button>
+          </li>
         ))}
       </ul>
       <a
