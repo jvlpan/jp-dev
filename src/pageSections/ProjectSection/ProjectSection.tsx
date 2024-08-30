@@ -13,6 +13,7 @@ type Project = {
   link: string;
   description: string;
   image_url: string;
+  is_featured: boolean;
   tags: string[];
 };
 
@@ -74,19 +75,24 @@ export default function ProjectSection() {
         <motion.ul className={classes.projects}>
           <AnimatePresence>
             {filteredProjects &&
-              filteredProjects.map((project) => (
-                <Project
-                  key={project.id}
-                  slug={project.slug}
-                  title={project.title}
-                  img={project.image_url}
-                  alt={project.image_alt}
-                  link={project.link}
-                  description={project.description}
-                  tags={project.tags}
-                  onTagClick={handleTagClick}
-                />
-              ))}
+              filteredProjects.map((project) => {
+                let cssClass = classes.project;
+                if (project.is_featured) cssClass = classes["project-featured"];
+                return (
+                  <Project
+                    key={project.id}
+                    slug={project.slug}
+                    title={project.title}
+                    img={project.image_url}
+                    alt={project.image_alt}
+                    link={project.link}
+                    description={project.description}
+                    tags={project.tags}
+                    onTagClick={handleTagClick}
+                    className={cssClass}
+                  />
+                );
+              })}
           </AnimatePresence>
         </motion.ul>
       </div>

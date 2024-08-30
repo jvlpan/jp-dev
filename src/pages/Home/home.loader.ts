@@ -2,7 +2,10 @@ import { json } from "react-router-dom";
 import supabase from "@/config/supabaseClient";
 
 export async function loader() {
-  const { data, error } = await supabase.from("projects").select(`
+  const { data, error } = await supabase
+    .from("projects")
+    .select(
+      `
     id,
     slug,
     title,
@@ -10,13 +13,17 @@ export async function loader() {
     image_alt,
     link,
     description,
+    is_featured,
     projects_to_tags (
       tags (
         id,
         name
       )
     )
-  `);
+  `
+    )
+    .order("is_featured", { ascending: true })
+    .order("order", { ascending: true });
 
   if (error) {
     return json(

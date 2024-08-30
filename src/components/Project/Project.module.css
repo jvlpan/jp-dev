@@ -13,6 +13,7 @@
 .project-link {
   font-weight: 700;
   padding: 0 0.75rem;
+  flex: 1;
 }
 
 .project-link a {
@@ -28,6 +29,10 @@
   border-radius: 0.6rem;
   margin: 1rem 0;
   transition: all 150ms linear;
+}
+
+.text-block {
+  flex: 1;
 }
 
 .description {
@@ -93,7 +98,7 @@
     gap: 0.5rem;
   }
   .skills-list button {
-    padding: 0.5rem 1rem;
+    padding: 0.25rem 0.75rem;
     font-weight: 600;
   }
 

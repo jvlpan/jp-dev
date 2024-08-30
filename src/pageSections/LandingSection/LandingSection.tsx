@@ -30,7 +30,7 @@ export default function LandingBanner() {
         transition={{ duration: 0.5 }}
       >
         <h1>
-          Hello, I'm <span className={classes.name}>Julia Pan</span>
+          Hi, I'm <span className={classes.name}>Julia Pan</span>
         </h1>
         <h2>
           I am

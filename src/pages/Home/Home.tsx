@@ -2,6 +2,7 @@ import { useLayoutEffect } from "react";
 import { motion } from "framer-motion";
 import LandingBanner from "@/pageSections/LandingSection";
 import ProjectSection from "@/pageSections/ProjectSection";
+import AboutSection from "@/pageSections/AboutSection";
 
 export default function Home() {
   useLayoutEffect(() => {
@@ -22,6 +23,7 @@ export default function Home() {
     >
       <LandingBanner />
       <ProjectSection />
+      <AboutSection />
     </motion.div>
   );
 }
