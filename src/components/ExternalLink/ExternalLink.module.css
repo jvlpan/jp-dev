@@ -1,0 +1,12 @@
+.visit-link {
+  display: inline-block;
+  border: 2px solid transparent;
+  border-radius: 0.375rem;
+  transition: border-color 0.25s;
+}
+.visit-link > svg {
+  height: 1rem;
+  width: 1rem;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}

@@ -1,6 +1,14 @@
 import { LoaderFunctionArgs, json } from "react-router-dom";
 import supabase from "@/config/supabaseClient";
 
+export function getImageUrl(slug: string, imageName: string) {
+  const { data } = supabase.storage
+    .from("images")
+    .getPublicUrl(`${slug}/${imageName}`);
+
+  return data.publicUrl;
+}
+
 export async function loader({ params }: LoaderFunctionArgs) {
   const { id } = params;
   const { data, error } = await supabase
@@ -14,6 +22,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
     image_alt,
     link,
     description,
+    detailed_description,
     projects_to_tags (
       tags (
         id,

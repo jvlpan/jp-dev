@@ -1,6 +1,9 @@
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { getImageUrl } from "./projectdetails.loader";
 import classes from "./ProjectDetails.module.css";
+import Markdown from "react-markdown";
+import ExternalLink from "@/components/ExternalLink";
 
 type Project = {
   id: number;
@@ -8,6 +11,7 @@ type Project = {
   image_url: string;
   alt: string;
   description: string;
+  detailed_description: string;
   link: string;
   tags: string[];
 };
@@ -20,47 +24,83 @@ export default function ProjectDetails() {
     navigate(`/?filter=${tag}#projects`);
   }
 
+  let content;
+
+  if (project.detailed_description) {
+    content = (
+      <Markdown
+        className={classes.markdown}
+        components={{
+          img({ alt, src }) {
+            if (src) {
+              const [slug, imageName] = src.split("/");
+              const imageUrl = getImageUrl(slug, imageName);
+
+              return <img src={imageUrl} alt={alt} />;
+            }
+          },
+        }}
+      >
+        {project.detailed_description}
+      </Markdown>
+    );
+  } else {
+    content = (
+      <p className={classes.description}>
+        Details for this project are still being written! Please check back
+        later for more information.
+      </p>
+    );
+  }
+
   return (
     project && (
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
+        className={classes.project}
       >
-        <h1 className={classes.header}>Project Details</h1>
-        <div className={classes.project}>
-          <h2 className={classes["project-link"]}>
-            <a href={project.link} target="_blank" rel="noopener noreferrer">
-              {project.title}
-              <img
-                className={classes["project-image"]}
-                alt={project.alt}
-                src={project.image_url}
-              />
-            </a>
-          </h2>
-          <div className={classes["text-block"]}>
-            <p className={classes.description}>
-              This page is a work in progress! Please check back later for more
-              information on my work.
-            </p>
-            <p className={classes["call-to-filter"]}>
+        <p className={classes.header}>Project Details</p>
+        <h1 className={classes["project-title"]}>{project.title}</h1>
+        <section className={classes.introduction}>
+          <div className={classes["image-wrapper"]}>
+            <img
+              className={classes["project-image"]}
+              alt={project.alt}
+              src={project.image_url}
+            />
+          </div>
+          <ExternalLink link={project.link} className={classes["visit-link"]}>
+            Visit the project
+          </ExternalLink>
+          <div className={classes.description}>
+            <h3>Summary:</h3>
+            <p>{project.description}</p>
+          </div>
+
+          <div className={classes.skills}>
+            <h3 className={classes["call-to-filter"]}>
               See my other projects with these skills:
-            </p>
+            </h3>
             <ul className={classes["skills-list"]}>
               {project.tags.map((tag) => (
-                <button
-                  key={tag}
-                  className={classes["skill-tag"]}
-                  onClick={() => handleTagClick(tag)}
-                >
-                  {tag}
-                </button>
+                <li key={tag}>
+                  <button
+                    className={classes["skill-tag"]}
+                    onClick={() => handleTagClick(tag)}
+                  >
+                    {tag}
+                  </button>
+                </li>
               ))}
             </ul>
-            <Link to="/">Return to home!</Link>
           </div>
-        </div>
+        </section>
+        {content}
+        <Link to="/" className={classes["link-to-home"]}>
+          Return to Home
+        </Link>
       </motion.div>
     )
   );
