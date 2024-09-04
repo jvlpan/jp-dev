@@ -1,9 +1,32 @@
+import {
+  motion,
+  useAnimation,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
 import { HashLink } from "react-router-hash-link";
 import classes from "./Navbar.module.css";
 
 export default function Navbar() {
+  const hideNav = useAnimation();
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (window.innerWidth <= 768) {
+      const previous = scrollY.getPrevious();
+      if (previous && latest > previous && latest > 200) {
+        hideNav.start({ y: "-100%" });
+      } else {
+        hideNav.start({ y: 0 });
+      }
+    }
+  });
   return (
-    <nav className={classes.navbar} id="navbar">
+    <motion.nav
+      variants={{ visible: { y: 0 }, hidden: { y: "-100%" } }}
+      animate={hideNav}
+      className={classes.navbar}
+      id="navbar"
+    >
       <HashLink className={classes["home-link"]} to="/#" title="Home">
         <span className={classes.logo}>
           <svg
@@ -31,6 +54,6 @@ export default function Navbar() {
       <div className={classes["nav-links"]}>
         <HashLink to="/#projects">Projects</HashLink>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
