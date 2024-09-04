@@ -12,9 +12,27 @@
   color: lime;
 }
 
+.banner-text {
+  width: 100%;
+  text-align: center;
+}
+
+.banner-text h1 {
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+
 .landing-banner a {
   font-size: 1.25rem;
   margin-bottom: 4rem;
+}
+
+.description {
+  font-size: 2rem;
+  line-height: 2.25rem;
+  display: block;
+  width: 50%;
+  margin: 2rem auto;
 }
 
 .background {
@@ -38,30 +56,30 @@
   );
 }
 
-.banner-text {
-  text-align: center;
-}
-.banner-text h1,
-.banner-text h2 {
-  font-weight: 700;
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-  margin: 2rem;
-}
-
-.name,
+.highlight,
 .typewriter {
   color: light-teal;
+}
+
+.cursor {
+  animation: none;
 }
 
 @media (min-width: 768px) and (min-height: 430px) {
   .landing-banner {
     padding-top: 5rem;
   }
-  .banner-text h1,
-  .banner-text h2 {
+  .banner-text h1 {
+    font-weight: 700;
     font-size: 4.5rem;
     line-height: 1;
+  }
+  .description {
+    font-size: 4rem;
+    line-height: 1;
+    display: block;
+    width: 50%;
+    margin: 2rem auto;
   }
   .landing-banner a {
     text-decoration: none;
@@ -72,5 +90,19 @@
   }
   .landing-banner a:hover {
     color: green;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cursor {
+    animation: blink 1s steps(1) infinite;
+  }
+
+  @keyframes blink {
+    0% {
+      opacity: 100%;
+    }
+    50% {
+      opacity: 0;
+    }
   }
 }

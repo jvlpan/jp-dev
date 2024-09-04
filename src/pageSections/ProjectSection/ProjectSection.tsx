@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import classes from "./ProjectSection.module.css";
 import Project from "@/components/Project";
 
-type Project = {
+interface Project {
   id: number;
   slug: string;
   title: string;
@@ -15,7 +15,7 @@ type Project = {
   image_url: string;
   is_featured: boolean;
   tags: string[];
-};
+}
 
 export default function ProjectSection() {
   const { projects, error } = useLoaderData() as {

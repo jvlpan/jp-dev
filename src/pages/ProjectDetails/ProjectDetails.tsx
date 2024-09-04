@@ -1,11 +1,11 @@
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { getImageUrl } from "./projectdetails.loader";
 import classes from "./ProjectDetails.module.css";
 import Markdown from "react-markdown";
 import ExternalLink from "@/components/ExternalLink";
 
-type Project = {
+interface Project {
   id: number;
   title: string;
   image_url: string;
@@ -14,11 +14,22 @@ type Project = {
   detailed_description: string;
   link: string;
   tags: string[];
+}
+
+const variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const reducedMotionVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
 };
 
 export default function ProjectDetails() {
   const navigate = useNavigate();
   const project = useLoaderData() as Project;
+  const shouldReduceMotion = useReducedMotion();
 
   function handleTagClick(tag: string) {
     navigate(`/?filter=${tag}#projects`);
@@ -56,8 +67,9 @@ export default function ProjectDetails() {
   return (
     project && (
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial="hidden"
+        animate="visible"
+        variants={shouldReduceMotion ? reducedMotionVariants : variants}
         transition={{ duration: 0.3 }}
         className={classes.project}
       >

@@ -27,7 +27,7 @@ export default function Navbar() {
       className={classes.navbar}
       id="navbar"
     >
-      <HashLink className={classes["home-link"]} to="/#" title="Home">
+      <HashLink className={classes["home-link"]} to="/#">
         <span className={classes.logo}>
           <svg
             aria-hidden="true"

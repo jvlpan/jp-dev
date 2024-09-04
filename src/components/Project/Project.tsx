@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, useReducedMotion } from "framer-motion";
 import classes from "./Project.module.css";
 import ExternalLink from "../ExternalLink";
 
-type ProjectProps = {
+interface ProjectProps {
   slug: string;
   title: string;
   img: string;
@@ -13,6 +13,32 @@ type ProjectProps = {
   tags: string[];
   className: string;
   onTagClick: (tag: string) => void;
+}
+
+const linkVariants = {
+  default: { opacity: 1 },
+  hover: { opacity: 0 },
+};
+
+const textVariants = {
+  default: { y: 30, x: "-50%", opacity: 0 },
+  hover: {
+    y: 0,
+    x: "-50%",
+    opacity: 1,
+    transition: {
+      y: { type: "spring", stiffness: 300, damping: 15 },
+      duration: 0.3,
+    },
+  },
+};
+
+const reducedMotionTextVariants = {
+  default: { x: "-50%", opacity: 0 },
+  hover: {
+    x: "-50%",
+    opacity: 1,
+  },
 };
 
 export default function Project({
@@ -26,31 +52,20 @@ export default function Project({
   className,
   onTagClick,
 }: ProjectProps) {
+  const shouldReduceMotion = useReducedMotion();
   const linkAnimation = useAnimation();
   const textAnimation = useAnimation();
 
-  const handleMouseEnter = () => {
-    linkAnimation.start({ opacity: 0, transition: { duration: 0.3 } });
-    textAnimation.start({
-      y: 0,
-      x: "-50%",
-      opacity: 1,
-      transition: {
-        y: { type: "spring", stiffness: 300, damping: 15 },
-        duration: 0.3,
-      },
-    });
-  };
+  function handleMouseEnter() {
+    linkAnimation.start("hover");
+    textAnimation.start("hover");
+  }
 
-  const handleMouseLeave = () => {
-    linkAnimation.start({ opacity: 1, transition: { duration: 0.3 } });
-    textAnimation.start({
-      y: 30,
-      x: "-50%",
-      opacity: 0,
-      transition: { duration: 0.3 },
-    });
-  };
+  function handleMouseLeave() {
+    linkAnimation.start("default");
+    textAnimation.start("default");
+  }
+
   return (
     <motion.li
       className={`${classes.project} ${className}`}
@@ -97,12 +112,20 @@ export default function Project({
             link={link}
             className={classes["visit-link"]}
             animate={linkAnimation}
+            variants={linkVariants}
           >
             Visit the project
           </ExternalLink>
           <motion.div
             animate={textAnimation}
-            initial={{ y: 30, x: "-50%", opacity: 0 }}
+            variants={
+              shouldReduceMotion ? reducedMotionTextVariants : textVariants
+            }
+            initial={
+              shouldReduceMotion
+                ? { x: "-50%", opacity: 0 }
+                : { y: 30, x: "-50%", opacity: 0 }
+            }
             className={classes["see-details-text"]}
           >
             See project details

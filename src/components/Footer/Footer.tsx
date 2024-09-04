@@ -9,9 +9,10 @@ export default function Footer() {
       </div>
       <p>Available for hire or freelance opportunities</p>
       <div className={classes["social-buttons"]}>
-        <a href="mailto:julia.vl.pan@gmail.com" type="button" title="Email">
+        <a href="mailto:julia.vl.pan@gmail.com" type="button">
           <span>
             <svg
+              aria-hidden="true"
               fill="#accd67"
               data-name="Layer 1"
               xmlns="http://www.w3.org/2000/svg"
@@ -23,13 +24,10 @@ export default function Footer() {
           </span>
           <span className="sr-only">Email</span>
         </a>
-        <a
-          href="https://www.linkedin.com/in/juliapan/"
-          type="button"
-          title="LinkedIn"
-        >
+        <a href="https://www.linkedin.com/in/juliapan/" type="button">
           <span>
             <svg
+              aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="#accd67"
               viewBox="0 0 448 512"
@@ -41,9 +39,10 @@ export default function Footer() {
         </a>
         {/*
         - Icon for Github link, coming soon
-        <a href="#" type="button" title="GitHub">
+        <a href="#" type="button">
           <span>
             <svg
+              aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="#accd67"
               viewBox="0 0 496 512"
