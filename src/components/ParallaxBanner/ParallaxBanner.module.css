@@ -1,0 +1,44 @@
+@value colors: "@/colors.css";
+@value light-teal, lime, green from colors;
+
+.parallax-banner {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+.text {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.background {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: #0e1e1b;
+  opacity: 50%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .parallax-banner {
+    height: 150vh;
+  }
+  .background {
+    position: sticky;
+    top: 0;
+  }
+}

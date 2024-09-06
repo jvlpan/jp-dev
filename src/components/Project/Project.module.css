@@ -106,7 +106,7 @@
   }
   .project-link:hover .project-image {
     filter: grayscale(0);
-    transform: scale(1.05);
+    transform: scale(1);
   }
   .skills-list {
     justify-content: center;
@@ -124,5 +124,11 @@
 @media (min-width: 1200px) {
   .project:only-child {
     width: 50%;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .project-link:hover .project-image {
+    transform: scale(1.05);
   }
 }

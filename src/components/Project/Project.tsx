@@ -69,14 +69,16 @@ export default function Project({
   return (
     <motion.li
       className={`${classes.project} ${className}`}
-      layout
+      layout={!shouldReduceMotion}
       variants={{
-        hidden: { opacity: 0, y: 40 },
-        visible: { opacity: 1, y: 0 },
+        hidden: { opacity: 0, x: shouldReduceMotion ? 0 : "50%" },
+        visible: { opacity: 1, x: 0 },
       }}
+      transition={{ duration: 0.75 }}
       initial="hidden"
-      animate="visible"
       exit="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
     >
       <h3
         className={classes["project-link"]}

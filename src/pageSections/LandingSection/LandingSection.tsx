@@ -1,7 +1,8 @@
-import { useRef } from "react";
-import { useInView, motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Typewriter from "typewriter-effect";
+import ParallaxBanner from "@/components/ParallaxBanner";
 import classes from "./LandingSection.module.css";
+import backgroundImg from "@/assets/background.jpg";
 
 const typewriterStrings = [
   "a front-end developer",
@@ -20,8 +21,6 @@ const reducedMotionVariants = {
 };
 
 export default function LandingBanner() {
-  const bannerTextRef = useRef(null);
-  const isInView = useInView(bannerTextRef);
   const shouldReduceMotion = useReducedMotion();
 
   let description = (
@@ -55,23 +54,21 @@ export default function LandingBanner() {
 
   return (
     <section className={classes["landing-banner"]}>
-      <motion.div
-        ref={bannerTextRef}
-        className={classes["banner-text"]}
-        variants={shouldReduceMotion ? reducedMotionVariants : variants}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        transition={{ duration: 0.5 }}
-      >
-        <h1>
-          Hi, I'm <span className={classes.highlight}>Julia Pan</span>
-        </h1>
-        {description}
-      </motion.div>
-      <a href="#projects">Take a deep dive into my work.</a>
-      <div
-        className={`${classes.background} ${classes["transparent-gradient"]}`}
-      ></div>
+      <ParallaxBanner backgroundImg={backgroundImg}>
+        <motion.div
+          className={classes["banner-text"]}
+          variants={shouldReduceMotion ? reducedMotionVariants : variants}
+          initial="hidden"
+          animate={"visible"}
+          transition={{ duration: 0.5 }}
+        >
+          <h1>
+            Hi, I'm <span className={classes.highlight}>Julia Pan</span>
+          </h1>
+          {description}
+        </motion.div>
+        <a href="#projects">Take a deep dive into my work.</a>
+      </ParallaxBanner>
     </section>
   );
 }
