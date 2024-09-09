@@ -5,21 +5,28 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import { HashLink } from "react-router-hash-link";
+import useMediaQuery from "@/hooks/useMediaQuery";
 import classes from "./Navbar.module.css";
+import useScrollSpy from "@/hooks/useScrollSpy";
 
 export default function Navbar() {
+  const { activeSection, sectionIds } = useScrollSpy(".nav-section");
+  const shouldHideNav = useMediaQuery("(max-width: 768px)");
   const hideNav = useAnimation();
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (window.innerWidth <= 768) {
+    if (shouldHideNav) {
       const previous = scrollY.getPrevious();
       if (previous && latest > previous && latest > 200) {
         hideNav.start({ y: "-100%" });
       } else {
         hideNav.start({ y: 0 });
       }
+    } else {
+      hideNav.start({ y: 0 });
     }
   });
+
   return (
     <motion.nav
       variants={{ visible: { y: 0 }, hidden: { y: "-100%" } }}
@@ -52,7 +59,17 @@ export default function Navbar() {
         <span className="sr-only">Home</span>
       </HashLink>
       <div className={classes["nav-links"]}>
-        <HashLink to="/#projects">Projects</HashLink>
+        {sectionIds.map((id) => {
+          return (
+            <HashLink
+              key={id}
+              to={`/#${id}`}
+              className={activeSection === id ? classes["active-link"] : ""}
+            >
+              {id}
+            </HashLink>
+          );
+        })}
       </div>
     </motion.nav>
   );

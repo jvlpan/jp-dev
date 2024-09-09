@@ -29,7 +29,7 @@ export default function VisitLink({
         xmlnsXlink="http://www.w3.org/1999/xlink"
         x="0px"
         y="0px"
-        viewBox="0 0 122.6 122.88"
+        viewBox="0 0 123 123"
         xmlSpace="preserve"
         fill="#ecfeff"
         style={{ display: "inline" }}

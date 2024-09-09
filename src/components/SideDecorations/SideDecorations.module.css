@@ -1,0 +1,108 @@
+@value colors: "@/colors.css";
+@value dark-green-teal from colors;
+
+.decoration {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 75%;
+  fill: dark-green-teal;
+  z-index: -2;
+  --skew-angle: 5deg;
+}
+
+.decoration svg {
+  position: absolute;
+}
+
+.left {
+  left: 0;
+  bottom: 20%;
+}
+
+.bottom {
+  bottom: 0;
+}
+
+.right {
+  right: 0;
+  bottom: 20%;
+}
+
+.left path {
+  transform-origin: center left;
+}
+
+.bottom path {
+  transform-origin: bottom center;
+}
+
+.right path {
+  transform-origin: center right;
+}
+
+@media (min-width: 1200px) {
+  .left,
+  .right {
+    bottom: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .left path:nth-child(1) {
+    --skew-angle: 10deg;
+    animation: swayY 4s infinite;
+  }
+
+  .left path:nth-child(2) {
+    --skew-angle: 5deg;
+    animation: swayY 3.9s infinite;
+  }
+
+  .bottom path:nth-child(1) {
+    --skew-angle: 7deg;
+    animation: swayX 4s infinite;
+  }
+
+  .bottom path:nth-child(2) {
+    --skew-angle: 5deg;
+    animation: swayX 3.9s infinite;
+  }
+
+  .right path:nth-child(1) {
+    --skew-angle: 5deg;
+    animation: swayY 4.1s infinite;
+  }
+
+  .right path:nth-child(2) {
+    --skew-angle: 10deg;
+    animation: swayY 3.9s infinite;
+  }
+
+  .right path:nth-child(3) {
+    --skew-angle: 7deg;
+    animation: swayY 4s infinite;
+  }
+
+  @keyframes swayY {
+    0%,
+    100% {
+      transform: skewY(var(--skew-angle));
+    }
+    50% {
+      transform: skewY(calc(-1deg * var(--skew-angle)));
+    }
+  }
+
+  @keyframes swayX {
+    0%,
+    100% {
+      transform: skewX(calc(-1deg * var(--skew-angle)));
+    }
+    50% {
+      transform: skewX(var(--skew-angle));
+    }
+  }
+}

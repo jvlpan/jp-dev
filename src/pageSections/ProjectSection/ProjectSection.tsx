@@ -63,7 +63,7 @@ export default function ProjectSection() {
           <p> Please refresh the page to try again!</p>
         </div>
       )}
-      <div id="projects" ref={projectsRef}>
+      <div id="projects" className="nav-section" ref={projectsRef}>
         {selectedTag && (
           <div className={classes.filter}>
             <p>
@@ -87,6 +87,7 @@ export default function ProjectSection() {
                     alt={project.image_alt}
                     link={project.link}
                     description={project.description}
+                    is_featured={project.is_featured}
                     tags={project.tags}
                     onTagClick={handleTagClick}
                     className={cssClass}

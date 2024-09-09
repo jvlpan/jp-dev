@@ -1,5 +1,5 @@
 @value colors: "@/colors.css";
-@value light-teal, lime, dark-green, light-lime, dark-teal-indigo from colors;
+@value lime, dark-green-teal from colors;
 
 @counter-style repeating-emoji {
   system: cyclic;
@@ -77,6 +77,14 @@ h3 {
 
 .markdown li {
   margin: 0.25rem;
+}
+
+blockquote {
+  font-size: 1.25rem;
+  background-color: dark-green-teal;
+  border-left: 10px solid lime;
+  padding: 1rem;
+  margin: 1rem 0;
 }
 
 .link-to-home {

@@ -1,5 +1,5 @@
 @value colors: "@/colors.css";
-@value light-teal, lime, green from colors;
+@value dark-teal-indigo from colors;
 
 .parallax-banner {
   position: relative;
@@ -29,7 +29,7 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background-color: #0e1e1b;
+  background-color: dark-teal-indigo;
   opacity: 50%;
 }
 

@@ -34,6 +34,7 @@
 }
 
 .nav-links a {
+  display: inline-block;
   padding: 0.75rem 1rem;
   margin: 0.5rem;
   font-weight: 600;
@@ -43,7 +44,12 @@
   color: light-teal;
 }
 
-.nav-links a:hover {
+.nav-links a::first-letter {
+  text-transform: capitalize;
+}
+
+.nav-links a:hover,
+.nav-links .active-link {
   background-color: lime;
   color: dark-teal-indigo;
 }

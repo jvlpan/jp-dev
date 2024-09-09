@@ -3,7 +3,7 @@ import classes from "./AboutSection.module.css";
 
 export default function AboutSection() {
   return (
-    <div id="about-section" className={classes["about-section"]}>
+    <section id="about" className={`nav-section ${classes["about-section"]}`}>
       <div className={classes.card}>
         <div className={classes.wrapper}>
           <img src={photoImg} className={classes["cover-image"]} />
@@ -35,6 +35,6 @@ export default function AboutSection() {
           <a href="mailto:julia.vl.pan@gmail.com">Let&apos;s chat!</a> &#x263A;
         </p>
       </div>
-    </div>
+    </section>
   );
 }

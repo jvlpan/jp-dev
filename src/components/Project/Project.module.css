@@ -2,12 +2,18 @@
 @value light-teal, lime, dark-green, light-lime, dark-teal-indigo from colors;
 
 .project {
+  position: relative;
   width: 100%;
   margin: 0 auto;
   background: dark-green;
   border-radius: 1rem;
   padding: 1.5rem 0.25rem;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+.featured-svg {
+  position: absolute;
+  top: -5%;
 }
 
 .project-link {

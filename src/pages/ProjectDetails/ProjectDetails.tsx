@@ -50,6 +50,10 @@ export default function ProjectDetails() {
               return <img src={imageUrl} alt={alt} />;
             }
           },
+          em(props) {
+            const { ...rest } = props;
+            return <i style={{ color: "#accd67" }} {...rest} />;
+          },
         }}
       >
         {project.detailed_description}
