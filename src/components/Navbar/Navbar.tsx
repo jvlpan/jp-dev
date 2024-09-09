@@ -5,12 +5,19 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import { HashLink } from "react-router-hash-link";
+import useScrollSpy from "@/hooks/useScrollSpy";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import classes from "./Navbar.module.css";
-import useScrollSpy from "@/hooks/useScrollSpy";
+
+const fallbackIds = ["projects", "about"];
 
 export default function Navbar() {
+  let ids = fallbackIds;
   const { activeSection, sectionIds } = useScrollSpy(".nav-section");
+  if (sectionIds.length > 0) {
+    ids = sectionIds;
+  }
+
   const shouldHideNav = useMediaQuery("(max-width: 768px)");
   const hideNav = useAnimation();
   const { scrollY } = useScroll();
@@ -59,7 +66,7 @@ export default function Navbar() {
         <span className="sr-only">Home</span>
       </HashLink>
       <div className={classes["nav-links"]}>
-        {sectionIds.map((id) => {
+        {ids.map((id) => {
           return (
             <HashLink
               key={id}

@@ -48,8 +48,11 @@
   text-transform: capitalize;
 }
 
-.nav-links a:hover,
-.nav-links .active-link {
+.nav-links a:hover {
   background-color: lime;
   color: dark-teal-indigo;
+}
+
+.nav-links .active-link {
+  color: lime;
 }

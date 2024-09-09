@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function useScrollSpy(selector: string) {
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [sectionIds, setSectionIds] = useState<string[]>([]);
+  const location = useLocation();
 
   useEffect(() => {
     const sections = document.querySelectorAll(selector);
     const ids = Array.from(sections).map((section) => section.id);
     setSectionIds(ids);
+    setActiveSection(null);
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -24,7 +27,7 @@ export default function useScrollSpy(selector: string) {
           setActiveSection(null);
         }
       },
-      { threshold: 0.5 }
+      { rootMargin: "-50% 0px" }
     );
 
     if (sections) {
@@ -34,7 +37,7 @@ export default function useScrollSpy(selector: string) {
     return () => {
       observer.disconnect();
     };
-  }, [activeSection, selector]);
+  }, [selector, location.pathname]);
 
   return { activeSection, sectionIds };
 }
