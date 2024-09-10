@@ -58,15 +58,6 @@
   text-align: left;
 }
 
-.text-block .skills-list {
-  gap: 0.25rem;
-}
-
-.skills-list button {
-  padding: 0 0.25rem;
-  font-weight: 400;
-}
-
 .swap-text {
   position: relative;
 }
@@ -109,14 +100,6 @@
   .project-link:hover .project-image {
     filter: grayscale(0);
     transform: scale(1);
-  }
-  .text-block .skills-list {
-    justify-content: center;
-    gap: 0.5rem;
-  }
-  .skills-list button {
-    padding: 0.25rem 0.75rem;
-    font-weight: 600;
   }
   .visit-link:hover {
     border-color: light-teal;

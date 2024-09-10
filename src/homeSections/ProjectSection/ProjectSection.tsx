@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import classes from "./ProjectSection.module.css";
 import Project from "@/components/Project";
+import Tags from "@/components/Tags";
 import ProjectType from "@/types/Project";
 
 interface ProjectSectionProps {
@@ -68,9 +69,14 @@ export default function ProjectSection({
                   <Project
                     key={project.id}
                     project={project}
-                    onTagClick={onTagClick}
                     className={cssClass}
-                  />
+                  >
+                    <Tags
+                      tags={project.tags}
+                      onTagClick={onTagClick}
+                      className={classes["skills-list"]}
+                    />
+                  </Project>
                 );
               })}
           </AnimatePresence>
