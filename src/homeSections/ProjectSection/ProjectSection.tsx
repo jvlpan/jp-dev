@@ -1,47 +1,27 @@
-import { useState, useEffect, useRef } from "react";
-import { useLoaderData, useSearchParams } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { useLoaderData } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import classes from "./ProjectSection.module.css";
 import Project from "@/components/Project";
+import ProjectType from "@/types/Project";
 
-interface Project {
-  id: number;
-  slug: string;
-  title: string;
-  image_name: string;
-  image_alt: string;
-  link: string;
-  description: string;
-  image_url: string;
-  is_featured: boolean;
-  tags: string[];
+interface ProjectSectionProps {
+  selectedTag: string | null;
+  onTagClick: (tag: string) => void;
+  onResetClick: () => void;
 }
 
-export default function ProjectSection() {
+export default function ProjectSection({
+  selectedTag,
+  onTagClick,
+  onResetClick,
+}: ProjectSectionProps) {
   const { projects, error } = useLoaderData() as {
-    projects: Project[] | null;
+    projects: ProjectType[] | null;
     error: string | null;
   };
 
   const projectsRef = useRef<HTMLDivElement>(null);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const selectedTagFromQuery = searchParams.get("filter");
-
-  const [selectedTag, setSelectedTag] = useState<string | null>(
-    selectedTagFromQuery
-  );
-
-  function handleTagClick(tag: string) {
-    setSearchParams({ filter: tag });
-    setSelectedTag(tag);
-  }
-
-  function handleResetFilter() {
-    searchParams.delete("filter");
-    setSearchParams(searchParams);
-    setSelectedTag(null);
-  }
-
   useEffect(() => {
     if (projectsRef.current && selectedTag) {
       projectsRef.current.scrollIntoView({ behavior: "smooth" });
@@ -54,22 +34,27 @@ export default function ProjectSection() {
       )
     : projects;
 
-  return (
-    <section id="project-section" className={classes["project-section"]}>
-      <h2>Previous Work</h2>
-      {error && (
-        <div className={classes.error}>
-          <p>Sorry, we&apos;ve got an error: {error}.</p>
-          <p> Please refresh the page to try again!</p>
-        </div>
-      )}
+  let content;
+
+  if (error) {
+    content = (
+      <div className="error-inline">
+        <p>
+          Sorry, we&apos;ve got an error when we tried to fetch projects:{" "}
+          {error}.
+        </p>
+        <p> Please refresh the page to try again!</p>
+      </div>
+    );
+  } else {
+    content = (
       <div id="projects" className="nav-section" ref={projectsRef}>
         {selectedTag && (
           <div className={classes.filter}>
             <p>
               Filtering projects by <span>{selectedTag}</span> tag
             </p>
-            <button onClick={handleResetFilter}>Reset filter</button>
+            <button onClick={onResetClick}>Reset filter</button>
           </div>
         )}
         <motion.ul className={classes.projects}>
@@ -82,28 +67,28 @@ export default function ProjectSection() {
                 return (
                   <Project
                     key={project.id}
-                    slug={project.slug}
-                    title={project.title}
-                    img={project.image_url}
-                    alt={project.image_alt}
-                    link={project.link}
-                    description={project.description}
-                    is_featured={project.is_featured}
-                    tags={project.tags}
-                    onTagClick={handleTagClick}
+                    project={project}
+                    onTagClick={onTagClick}
                     className={cssClass}
                   />
                 );
               })}
-            {(!filteredProjects || filteredProjects.length === 0) && (
-              <p>
-                There are no projects with this tag. Please reset filter to see
-                all projects!
-              </p>
-            )}
           </AnimatePresence>
+          {(!filteredProjects || filteredProjects.length === 0) && (
+            <p>
+              There are currently no projects with this tag. Please reset filter
+              to see all projects!
+            </p>
+          )}
         </motion.ul>
       </div>
+    );
+  }
+
+  return (
+    <section id="project-section" className={classes["project-section"]}>
+      <h2>Projects</h2>
+      {content}
     </section>
   );
 }

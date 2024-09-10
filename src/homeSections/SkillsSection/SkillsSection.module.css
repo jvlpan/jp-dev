@@ -1,0 +1,17 @@
+.scroll-margin {
+  scroll-margin-top: 75px;
+}
+
+.skills-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  width: 80%;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .skills-section {
+    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+  }
+}

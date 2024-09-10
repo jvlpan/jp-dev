@@ -3,82 +3,32 @@ import { motion, useAnimation, useReducedMotion } from "framer-motion";
 import classes from "./Project.module.css";
 import ExternalLink from "../ExternalLink";
 import Tags from "../Tags";
+import ProjectType from "@/types/Project";
+import {
+  linkVariants,
+  textVariants,
+  reducedMotionTextVariants,
+  featuredSVGVariants,
+  reducedMotionSVGVariants,
+} from "./variants";
 
 interface ProjectProps {
-  slug: string;
-  title: string;
-  img: string;
-  alt: string;
-  link: string;
-  description: string;
-  is_featured: boolean;
-  tags: string[];
+  project: ProjectType;
   className: string;
   onTagClick: (tag: string) => void;
 }
 
-const linkVariants = {
-  default: { opacity: 1 },
-  hover: { opacity: 0 },
-};
-
-const textVariants = {
-  default: { y: 30, x: "-50%", opacity: 0 },
-  hover: {
-    y: 0,
-    x: "-50%",
-    opacity: 1,
-    transition: {
-      y: { type: "spring", stiffness: 300, damping: 15 },
-      duration: 0.3,
-    },
-  },
-};
-
-const reducedMotionTextVariants = {
-  default: { x: "-50%", opacity: 0 },
-  hover: {
-    x: "-50%",
-    opacity: 1,
-  },
-};
-
-const featuredSVGVariants = {
-  default: { opacity: 0, scale: 0.5 },
-  hover: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      scale: {
-        type: "spring",
-        stiffness: 700,
-        damping: 20,
-      },
-      opacity: {
-        duration: 0.3,
-        ease: "easeInOut",
-      },
-    },
-  },
-};
-
-const reducedMotionSVGVariants = {
-  default: { opacity: 0, scale: 0.5 },
-  hover: {
-    opacity: 1,
-    scale: 1,
-  },
-};
-
 export default function Project({
-  slug,
-  title,
-  img,
-  alt,
-  link,
-  description,
-  is_featured,
-  tags,
+  project: {
+    slug,
+    title,
+    image_url: img,
+    image_alt: alt,
+    link,
+    description,
+    is_featured,
+    tags,
+  },
   className,
   onTagClick,
 }: ProjectProps) {
@@ -107,7 +57,7 @@ export default function Project({
         hidden: { opacity: 0, x: shouldReduceMotion ? 0 : "50%" },
         visible: { opacity: 1, x: 0 },
       }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.5 }}
       initial="hidden"
       exit="hidden"
       whileInView="visible"

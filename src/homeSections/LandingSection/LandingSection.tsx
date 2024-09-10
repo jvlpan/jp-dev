@@ -67,7 +67,7 @@ export default function LandingBanner() {
           </h1>
           {description}
         </motion.div>
-        <a href="#projects">Take a deep dive into my work.</a>
+        <a href="#experience">Take a deep dive into my work.</a>
       </ParallaxBanner>
     </section>
   );

@@ -118,6 +118,10 @@ h3 {
   position: relative;
 }
 
+.error-inline p {
+  margin: 0.5rem;
+}
+
 button {
   font-family: inherit;
   color: var(--color-dark-teal-indigo);
