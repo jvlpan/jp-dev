@@ -1,5 +1,5 @@
 @value colors: "@/colors.css";
-@value light-teal, lime, dark-green, light-lime, dark-teal-indigo from colors;
+@value light-teal, lime, dark-teal-indigo from colors;
 
 .navbar {
   position: fixed;

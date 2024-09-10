@@ -10,13 +10,6 @@
   width: 100%;
 }
 
-.project-section h2 {
-  font-weight: 700;
-  font-size: 3rem;
-  line-height: 3rem;
-  margin: 2rem 0;
-}
-
 .filter {
   margin: 0 auto;
   width: 90%;
@@ -41,7 +34,7 @@
 
 @media (min-width: 768px) {
   .projects {
-    width: 75%;
+    width: 85%;
     grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
     gap: 3rem;
   }

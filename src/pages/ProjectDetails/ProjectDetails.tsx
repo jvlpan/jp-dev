@@ -1,9 +1,10 @@
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { getImageUrl } from "./projectdetails.loader";
-import classes from "./ProjectDetails.module.css";
 import Markdown from "react-markdown";
 import ExternalLink from "@/components/ExternalLink";
+import Tags from "@/components/Tags";
+import classes from "./ProjectDetails.module.css";
 
 interface Project {
   id: number;
@@ -40,7 +41,6 @@ export default function ProjectDetails() {
   if (project.detailed_description) {
     content = (
       <Markdown
-        className={classes.markdown}
         components={{
           img({ alt, src }) {
             if (src) {
@@ -70,7 +70,7 @@ export default function ProjectDetails() {
 
   return (
     project && (
-      <motion.div
+      <motion.article
         initial="hidden"
         animate="visible"
         variants={shouldReduceMotion ? reducedMotionVariants : variants}
@@ -87,9 +87,6 @@ export default function ProjectDetails() {
               src={project.image_url}
             />
           </div>
-          <ExternalLink link={project.link} className={classes["visit-link"]}>
-            Visit the project
-          </ExternalLink>
           <div className={classes.description}>
             <h3>Summary:</h3>
             <p>{project.description}</p>
@@ -99,25 +96,17 @@ export default function ProjectDetails() {
             <h3 className={classes["call-to-filter"]}>
               See my other projects with these skills:
             </h3>
-            <ul className={classes["skills-list"]}>
-              {project.tags.map((tag) => (
-                <li key={tag}>
-                  <button
-                    className={classes["skill-tag"]}
-                    onClick={() => handleTagClick(tag)}
-                  >
-                    {tag}
-                  </button>
-                </li>
-              ))}
-            </ul>
+            <Tags tags={project.tags} onTagClick={handleTagClick} />
           </div>
+          <ExternalLink link={project.link} className={classes["visit-link"]}>
+            Visit the project
+          </ExternalLink>
         </section>
-        {content}
+        <section className={classes.markdown}>{content}</section>
         <Link to="/" className={classes["link-to-home"]}>
           Return to Home
         </Link>
-      </motion.div>
+      </motion.article>
     )
   );
 }

@@ -1,0 +1,8 @@
+.skills-list {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0 0.75rem;
+}

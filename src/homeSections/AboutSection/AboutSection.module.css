@@ -12,14 +12,6 @@
   line-height: 1.75rem;
 }
 
-.text-block h2 {
-  text-align: center;
-  font-weight: 700;
-  font-size: 3rem;
-  line-height: 3rem;
-  margin: 2rem 0;
-}
-
 .text-block p {
   margin: 1rem 0;
 }

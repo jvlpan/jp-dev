@@ -2,38 +2,45 @@ import { json } from "react-router-dom";
 import supabase from "@/config/supabaseClient";
 
 export async function loader() {
-  const { data, error } = await supabase
-    .from("projects")
-    .select(
-      `
-    id,
-    slug,
-    title,
-    image_name,
-    image_alt,
-    link,
-    description,
-    is_featured,
-    projects_to_tags (
-      tags (
-        id,
-        name
+  const [projectsResponse, tagsResponse] = await Promise.all([
+    supabase
+      .from("projects")
+      .select(
+        `
+      id,
+      slug,
+      title,
+      image_name,
+      image_alt,
+      link,
+      description,
+      is_featured,
+      projects_to_tags (
+        tags (
+          id,
+          name
+        )
       )
-    )
-  `
-    )
-    .order("is_featured", { ascending: true })
-    .order("order", { ascending: true });
+    `
+      )
+      .order("is_featured", { ascending: true })
+      .order("order", { ascending: true }),
 
-  if (error) {
+    supabase.from("tags").select("id, name, category"),
+  ]);
+
+  const { data: projects, error: projectsError } = projectsResponse;
+  const { data: tags, error: tagsError } = tagsResponse;
+
+  if (projectsError || tagsError) {
     return json(
-      { projects: null, error: "Could not fetch projects" },
+      { projects: null, error: "Could not fetch data" },
       { status: 500 }
     );
   }
 
-  if (data) {
-    const projectsWithImages = data.map((project) => {
+  if (projects && tags) {
+    const projectsWithImages = projects.map((project) => {
       const { data: imageData } = supabase.storage
         .from("images")
         .getPublicUrl(project.image_name!);
@@ -45,8 +52,8 @@ export async function loader() {
       };
     });
 
-    return json({ projects: projectsWithImages, error: null });
+    return json({ projects: projectsWithImages, tags, error: null });
   }
 
-  return json({ projects: null, error: "No projects found" });
+  return json({ projects: null, tags: null, error: "No projects found" });
 }

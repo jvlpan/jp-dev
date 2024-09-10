@@ -18,11 +18,11 @@ export default function Navbar() {
     ids = sectionIds;
   }
 
-  const shouldHideNav = useMediaQuery("(max-width: 768px)");
+  const isStaticNav = useMediaQuery("(min-width: 768px)");
   const hideNav = useAnimation();
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (shouldHideNav) {
+    if (!isStaticNav) {
       const previous = scrollY.getPrevious();
       if (previous && latest > previous && latest > 200) {
         hideNav.start({ y: "-100%" });

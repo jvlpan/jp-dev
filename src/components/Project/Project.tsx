@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion, useAnimation, useReducedMotion } from "framer-motion";
 import classes from "./Project.module.css";
 import ExternalLink from "../ExternalLink";
+import Tags from "../Tags";
 
 interface ProjectProps {
   slug: string;
@@ -150,18 +151,11 @@ export default function Project({
       </h3>
       <div className={classes["text-block"]}>
         <p className={classes.description}>{description}</p>
-        <ul className={classes["skills-list"]}>
-          {tags.map((tag) => (
-            <li key={tag}>
-              <button
-                className={classes["skill-tag"]}
-                onClick={() => onTagClick(tag)}
-              >
-                {tag}
-              </button>
-            </li>
-          ))}
-        </ul>
+        <Tags
+          tags={tags}
+          onTagClick={onTagClick}
+          className={classes["skills-list"]}
+        />
         <div className={classes["swap-text"]}>
           <ExternalLink
             link={link}

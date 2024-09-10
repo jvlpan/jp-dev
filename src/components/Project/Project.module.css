@@ -1,5 +1,5 @@
 @value colors: "@/colors.css";
-@value light-teal, lime, dark-green, light-lime, dark-teal-indigo from colors;
+@value light-teal, lime, dark-green, light-lime from colors;
 
 .project {
   position: relative;
@@ -32,7 +32,7 @@
 .project-image-container {
   position: relative;
   overflow: hidden;
-  margin: 0.5rem;
+  margin-top: 1rem;
   width: 100%;
   height: 100%;
   aspect-ratio: 16 / 9;
@@ -58,12 +58,8 @@
   text-align: left;
 }
 
-.skills-list {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+.text-block .skills-list {
   gap: 0.25rem;
-  padding: 0 0.75rem;
 }
 
 .skills-list button {
@@ -93,16 +89,16 @@
 @media (min-width: 768px) {
   .project {
     width: 100%;
-    padding: 1.5rem 2rem;
+    padding: 0.5rem;
   }
   .description {
-    width: 75%;
+    width: 90%;
   }
   .project-image {
     filter: grayscale(75%);
   }
   .project-link a {
-    font-size: 2.5rem;
+    font-size: 2rem;
     text-decoration-line: none;
     color: light-lime;
   }
@@ -114,7 +110,7 @@
     filter: grayscale(0);
     transform: scale(1);
   }
-  .skills-list {
+  .text-block .skills-list {
     justify-content: center;
     gap: 0.5rem;
   }
@@ -128,8 +124,19 @@
 }
 
 @media (min-width: 1200px) {
+  .project {
+    padding: 1.5rem 2rem;
+  }
   .project:only-child {
     width: 50%;
+  }
+  .project-link a {
+    font-size: 2.5rem;
+    line-height: 2.75rem;
+  }
+
+  .description {
+    width: 75%;
   }
 }
 

@@ -2,9 +2,9 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 import classes from "./SideDecorations.module.css";
 
 export default function SideDecorations() {
-  const isDecorationDisabled = useMediaQuery("(max-width: 768px)");
+  const isDecorationVisible = useMediaQuery("(min-width: 768px)");
 
-  if (isDecorationDisabled) {
+  if (!isDecorationVisible) {
     return null;
   }
 

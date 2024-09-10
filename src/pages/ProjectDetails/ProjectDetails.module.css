@@ -57,17 +57,8 @@ h3 {
   padding: 0.5rem;
 }
 
-.skills-list {
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding: 0 0.75rem;
-}
-
 .visit-link {
-  margin-left: 0.5rem;
+  margin: 1rem 0.5rem;
 }
 
 .markdown ul {
@@ -84,7 +75,7 @@ blockquote {
   background-color: dark-green-teal;
   border-left: 10px solid lime;
   padding: 1rem;
-  margin: 1rem 0;
+  margin: 2rem 0;
 }
 
 .link-to-home {
