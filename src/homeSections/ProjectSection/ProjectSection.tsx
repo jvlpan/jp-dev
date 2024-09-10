@@ -75,6 +75,7 @@ export default function ProjectSection() {
         <motion.ul className={classes.projects}>
           <AnimatePresence>
             {filteredProjects &&
+              filteredProjects.length > 0 &&
               filteredProjects.map((project) => {
                 let cssClass = classes.project;
                 if (project.is_featured) cssClass = classes["project-featured"];
@@ -94,6 +95,12 @@ export default function ProjectSection() {
                   />
                 );
               })}
+            {(!filteredProjects || filteredProjects.length === 0) && (
+              <p>
+                There are no projects with this tag. Please reset filter to see
+                all projects!
+              </p>
+            )}
           </AnimatePresence>
         </motion.ul>
       </div>

@@ -1,8 +1,8 @@
 import { useLayoutEffect } from "react";
 import { motion } from "framer-motion";
-import LandingBanner from "@/pageSections/LandingSection";
-import ProjectSection from "@/pageSections/ProjectSection";
-import AboutSection from "@/pageSections/AboutSection";
+import LandingBanner from "@/homeSections/LandingSection";
+import ProjectSection from "@/homeSections/ProjectSection";
+import AboutSection from "@/homeSections/AboutSection";
 
 export default function Home() {
   useLayoutEffect(() => {
