@@ -2,6 +2,9 @@
 @value dark-green-teal, lime, dark-teal from colors;
 
 .card {
+  --background-color: dark-teal;
+  --background-color-hover: lime;
+  --color-text: lime;
   background-color: dark-green-teal;
   padding: 0.5rem 1rem 1.5rem;
 }
@@ -27,7 +30,7 @@
   position: relative;
   overflow: hidden;
   z-index: 1;
-  color: lime;
+  color: var(--color-text);
   transition: color 0.3s ease;
 }
 
@@ -38,7 +41,7 @@
   left: 0;
   width: 100%;
   height: 33%;
-  background-color: dark-teal;
+  background-color: var(--background-color);
   transition: height 0.5s ease, background-color 0.5s ease;
   z-index: -1;
 }
@@ -49,7 +52,7 @@
   }
 
   .card:hover .animated-div::before {
-    background-color: lime;
+    background-color: var(--background-color-hover);
     height: 100%;
   }
 }

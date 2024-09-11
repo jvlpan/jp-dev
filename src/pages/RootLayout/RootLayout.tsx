@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SkipNavigation from "@/components/SkipNavigation";
 import SideDecorations from "@/components/SideDecorations";
+import classes from "./RootLayout.module.css";
 
 export default function RootLayout() {
   const location = useLocation();
@@ -14,10 +15,10 @@ export default function RootLayout() {
     <>
       <Navbar />
       <SkipNavigation id={"projects"} />
-      <main id="main-content">
+      <main id="main-content" className={classes.main}>
         <Outlet />
-        <SideDecorations />
       </main>
+      <SideDecorations />
       <Footer />
     </>
   );

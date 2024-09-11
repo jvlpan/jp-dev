@@ -8,6 +8,11 @@ interface SkillsCardProps {
   highlighted: string;
   remainderTitle: string;
   category: string;
+  colors?: {
+    background: string;
+    color: string;
+    "background-hover": string;
+  };
   children: React.ReactNode;
 }
 
@@ -15,6 +20,7 @@ export default function SkillsCard({
   highlighted,
   remainderTitle,
   category,
+  colors,
   children,
 }: SkillsCardProps) {
   const { tags, error } = useLoaderData() as {
@@ -28,7 +34,6 @@ export default function SkillsCard({
       .filter((tag) => tag.category === category)
       .map((tag) => tag.name);
   }
-
   return (
     <motion.div
       className={classes.card}
@@ -42,7 +47,18 @@ export default function SkillsCard({
       }}
     >
       <h3>
-        <span className={classes["animated-div"]}>{highlighted}</span>{" "}
+        <span
+          className={classes["animated-div"]}
+          style={
+            {
+              "--background-color": colors?.background,
+              "--background-color-hover": colors?.["background-hover"],
+              "--color-text": colors?.color,
+            } as React.CSSProperties
+          }
+        >
+          {highlighted}
+        </span>{" "}
         {remainderTitle}
       </h3>
       {children}

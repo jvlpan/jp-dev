@@ -2,6 +2,24 @@ import { motion } from "framer-motion";
 import SkillsCard from "@/components/SkillsCard";
 import classes from "./SkillsSection.module.css";
 
+const frontendColors = {
+  background: "#13526b",
+  color: "#67cdcc",
+  "background-hover": "#67cdcc",
+};
+
+const designColors = {
+  background: "#742222",
+  color: "#ffa69d",
+  "background-hover": "#ffa69d",
+};
+
+const researchColors = {
+  background: "#44215c",
+  color: "#d5b6f9",
+  "background-hover": "#d5b6f9",
+};
+
 export default function SkillsSection() {
   return (
     <section id="skills" className="nav-section">
@@ -19,6 +37,7 @@ export default function SkillsSection() {
           highlighted="Frontend"
           remainderTitle="Development"
           category="frontend"
+          colors={frontendColors}
         >
           <p>
             Dedicated to creating efficient, engaging, and responsive web
@@ -32,6 +51,7 @@ export default function SkillsSection() {
           highlighted="UI/UX"
           remainderTitle="Design"
           category="design"
+          colors={designColors}
         >
           <p>
             Passionate about designing intuitive UIs with strong, cohesive
@@ -44,6 +64,7 @@ export default function SkillsSection() {
           highlighted="Collaboration"
           remainderTitle="and Research"
           category="research"
+          colors={researchColors}
         >
           <p>
             Experienced in cross-functional collaboration and research that

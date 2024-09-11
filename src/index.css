@@ -95,12 +95,16 @@ body {
   width: 100%;
 }
 
-h2 {
-  text-align: center;
+h1 {
   font-weight: 700;
-  font-size: 3rem;
+  font-size: 2.5rem;
   line-height: 1.2;
-  margin: 2rem 0;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.2;
 }
 
 h3 {
@@ -171,6 +175,12 @@ button:focus-visible {
 }
 
 @media (min-width: 768px) {
+  h1 {
+    font-size: 4.5rem;
+  }
+  h2 {
+    font-size: 3rem;
+  }
   #projects {
     scroll-margin-top: 150px;
   }

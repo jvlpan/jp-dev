@@ -11,11 +11,6 @@
   margin-top: 5rem;
 }
 
-.banner-text h1 {
-  font-weight: 700;
-  font-size: 2.5rem;
-}
-
 .landing-banner a {
   font-size: 1.25rem;
   margin-bottom: 4rem;
@@ -38,10 +33,6 @@
 }
 
 @media (min-width: 768px) and (min-height: 430px) {
-  .banner-text h1 {
-    font-weight: 700;
-    font-size: 4.5rem;
-  }
   .description {
     font-size: 4rem;
     display: block;
