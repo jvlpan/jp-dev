@@ -23,7 +23,6 @@
 
 .description {
   font-size: 2rem;
-  line-height: 2.25rem;
   display: block;
   width: 50%;
   margin: 2rem auto;
@@ -42,11 +41,9 @@
   .banner-text h1 {
     font-weight: 700;
     font-size: 4.5rem;
-    line-height: 1;
   }
   .description {
     font-size: 4rem;
-    line-height: 1;
     display: block;
     width: 50%;
     margin: 2rem auto;
@@ -54,7 +51,6 @@
   .landing-banner a {
     text-decoration: none;
     font-size: 1.5rem;
-    line-height: 2rem;
     border-bottom: 2px solid;
     transition: all 150ms linear;
   }

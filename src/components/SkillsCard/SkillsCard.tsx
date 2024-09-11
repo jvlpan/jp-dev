@@ -1,3 +1,4 @@
+import { motion, useReducedMotion } from "framer-motion";
 import { useLoaderData } from "react-router-dom";
 import Tags from "@/components/Tags";
 import TagType from "@/types/Tag";
@@ -20,6 +21,7 @@ export default function SkillsCard({
     tags: TagType[] | null;
     error: string | null;
   };
+  const shouldReduceMotion = useReducedMotion();
 
   function getTagsByCategory(category: string, tags: TagType[]) {
     return tags
@@ -28,7 +30,17 @@ export default function SkillsCard({
   }
 
   return (
-    <div className={classes.card}>
+    <motion.div
+      className={classes.card}
+      variants={{
+        hidden: { opacity: 0, y: shouldReduceMotion ? 0 : "25%" },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: { type: "spring", duration: 1 },
+        },
+      }}
+    >
       <h3>
         <span className={classes["animated-div"]}>{highlighted}</span>{" "}
         {remainderTitle}
@@ -50,6 +62,6 @@ export default function SkillsCard({
           <p> Please refresh the page to try again!</p>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }

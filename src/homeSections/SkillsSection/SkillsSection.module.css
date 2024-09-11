@@ -1,3 +1,6 @@
+@value colors: "@/colors.css";
+@value dark-teal from colors;
+
 .scroll-margin {
   scroll-margin-top: 75px;
 }
@@ -5,13 +8,27 @@
 .skills-section {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
   width: 80%;
   margin: 0 auto;
+  grid-gap: 3px;
+  background-color: dark-teal;
+  border: 3px solid dark-teal;
 }
 
 @media (min-width: 768px) {
   .skills-section {
+    grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+  }
+  .skills-section > :first-child {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 1200px) {
+  .skills-section {
     grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+  }
+  .skills-section > :first-child {
+    grid-column: span 1;
   }
 }

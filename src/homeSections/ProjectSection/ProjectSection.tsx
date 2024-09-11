@@ -51,7 +51,18 @@ export default function ProjectSection() {
             <button onClick={handleResetFilter}>Reset filter</button>
           </div>
         )}
-        <motion.ul className={classes.projects}>
+        <motion.ul
+          className={classes.projects}
+          variants={{
+            visible: {
+              transition: { staggerChildren: 0.1, staggerDirection: -1 },
+            },
+          }}
+          viewport={{ once: true, amount: 0.2 }}
+          initial="hidden"
+          exit="hidden"
+          whileInView="visible"
+        >
           <AnimatePresence>
             {filteredProjects &&
               filteredProjects.length > 0 &&
