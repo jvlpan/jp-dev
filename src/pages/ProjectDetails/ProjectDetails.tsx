@@ -1,4 +1,4 @@
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { getImageUrl } from "./projectdetails.loader";
 import Markdown from "react-markdown";
@@ -28,14 +28,8 @@ const reducedMotionVariants = {
 };
 
 export default function ProjectDetails() {
-  const navigate = useNavigate();
   const project = useLoaderData() as Project;
   const shouldReduceMotion = useReducedMotion();
-
-  function handleTagClick(tag: string) {
-    navigate(`/?filter=${tag}#projects`);
-  }
-
   let content;
 
   if (project.detailed_description) {
@@ -96,7 +90,7 @@ export default function ProjectDetails() {
             <h3 className={classes["call-to-filter"]}>
               See my other projects with these skills:
             </h3>
-            <Tags tags={project.tags} onTagClick={handleTagClick} />
+            <Tags tags={project.tags} shouldNavigate />
           </div>
           <ExternalLink link={project.link} className={classes["visit-link"]}>
             Visit the project

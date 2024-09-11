@@ -7,7 +7,6 @@ interface SkillsCardProps {
   highlighted: string;
   remainderTitle: string;
   category: string;
-  onTagClick: (tag: string) => void;
   children: React.ReactNode;
 }
 
@@ -15,7 +14,6 @@ export default function SkillsCard({
   highlighted,
   remainderTitle,
   category,
-  onTagClick,
   children,
 }: SkillsCardProps) {
   const { tags, error } = useLoaderData() as {
@@ -40,7 +38,6 @@ export default function SkillsCard({
         <>
           <Tags
             tags={getTagsByCategory(category, tags)}
-            onTagClick={onTagClick}
             className={classes["skills-list"]}
           />
         </>

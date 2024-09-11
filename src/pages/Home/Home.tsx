@@ -1,6 +1,4 @@
-import { useLayoutEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-
+import { useLayoutEffect } from "react";
 import { motion } from "framer-motion";
 import LandingBanner from "@/homeSections/LandingSection";
 import SkillsSection from "@/homeSections/SkillsSection";
@@ -18,24 +16,6 @@ export default function Home() {
     }
   }, []);
 
-  const [searchParams, setSearchParams] = useSearchParams();
-  const selectedTagFromQuery = searchParams.get("filter");
-
-  const [selectedTag, setSelectedTag] = useState<string | null>(
-    selectedTagFromQuery
-  );
-
-  function handleTagClick(tag: string) {
-    setSearchParams({ filter: tag });
-    setSelectedTag(tag);
-  }
-
-  function handleResetFilter() {
-    searchParams.delete("filter");
-    setSearchParams(searchParams);
-    setSelectedTag(null);
-  }
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -43,12 +23,8 @@ export default function Home() {
       transition={{ duration: 0.3 }}
     >
       <LandingBanner />
-      <SkillsSection onTagClick={handleTagClick} />
-      <ProjectSection
-        selectedTag={selectedTag}
-        onTagClick={handleTagClick}
-        onResetClick={handleResetFilter}
-      />
+      <SkillsSection />
+      <ProjectSection />
       <AboutSection />
     </motion.div>
   );

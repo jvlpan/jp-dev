@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { motion, useAnimation, useReducedMotion } from "framer-motion";
 import classes from "./Project.module.css";
-import ExternalLink from "../ExternalLink";
+import ExternalLink from "@/components/ExternalLink";
+import Tags from "@/components/Tags";
 import ProjectType from "@/types/Project";
 import {
   linkVariants,
@@ -14,7 +15,6 @@ import {
 interface ProjectProps {
   project: ProjectType;
   className: string;
-  children: React.ReactNode;
 }
 
 export default function Project({
@@ -26,9 +26,9 @@ export default function Project({
     link,
     description,
     is_featured,
+    tags,
   },
   className,
-  children,
 }: ProjectProps) {
   const shouldReduceMotion = useReducedMotion();
   const linkAnimation = useAnimation();
@@ -99,7 +99,8 @@ export default function Project({
       </h3>
       <div className={classes["text-block"]}>
         <p className={classes.description}>{description}</p>
-        {children}
+
+        <Tags tags={tags} className={classes["skills-list"]} />
         <div className={classes["swap-text"]}>
           <ExternalLink
             link={link}

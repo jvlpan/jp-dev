@@ -1,33 +1,26 @@
-import { useEffect, useRef } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import classes from "./ProjectSection.module.css";
+import { useTagStore } from "@/store/tagStore";
 import Project from "@/components/Project";
-import Tags from "@/components/Tags";
 import ProjectType from "@/types/Project";
+import classes from "./ProjectSection.module.css";
 
-interface ProjectSectionProps {
-  selectedTag: string | null;
-  onTagClick: (tag: string) => void;
-  onResetClick: () => void;
-}
-
-export default function ProjectSection({
-  selectedTag,
-  onTagClick,
-  onResetClick,
-}: ProjectSectionProps) {
+export default function ProjectSection() {
   const { projects, error } = useLoaderData() as {
     projects: ProjectType[] | null;
     error: string | null;
   };
 
-  const projectsRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (projectsRef.current && selectedTag) {
-      projectsRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [selectedTag]);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const selectedTag = useTagStore((state) => state.selectedTag);
+  const resetSelectedTag = useTagStore((state) => state.resetSelectedTag);
+
+  function handleResetFilter() {
+    searchParams.delete("filter");
+    setSearchParams(searchParams);
+    resetSelectedTag();
+  }
 
   const filteredProjects = selectedTag
     ? projects?.filter((project) =>
@@ -49,13 +42,13 @@ export default function ProjectSection({
     );
   } else {
     content = (
-      <div id="projects" className="nav-section" ref={projectsRef}>
+      <div id="projects" className="nav-section">
         {selectedTag && (
           <div className={classes.filter}>
             <p>
               Filtering projects by <span>{selectedTag}</span> tag
             </p>
-            <button onClick={onResetClick}>Reset filter</button>
+            <button onClick={handleResetFilter}>Reset filter</button>
           </div>
         )}
         <motion.ul className={classes.projects}>
@@ -70,13 +63,7 @@ export default function ProjectSection({
                     key={project.id}
                     project={project}
                     className={cssClass}
-                  >
-                    <Tags
-                      tags={project.tags}
-                      onTagClick={onTagClick}
-                      className={classes["skills-list"]}
-                    />
-                  </Project>
+                  />
                 );
               })}
           </AnimatePresence>
