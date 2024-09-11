@@ -48,6 +48,7 @@ export default function ParallaxBanner({
           backgroundImage: `url(${backgroundImg})`,
           scale: shouldReduceMotion ? 1 : imgScale,
           borderRadius: imgCorners,
+          opacity: 1,
         }}
       >
         <motion.div

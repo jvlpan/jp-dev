@@ -10,16 +10,6 @@ const typewriterStrings = [
   "a creative professional",
 ];
 
-const variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const reducedMotionVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
-};
-
 export default function LandingBanner() {
   const shouldReduceMotion = useReducedMotion();
 
@@ -57,10 +47,21 @@ export default function LandingBanner() {
       <ParallaxBanner backgroundImg={backgroundImg}>
         <motion.div
           className={classes["banner-text"]}
-          variants={shouldReduceMotion ? reducedMotionVariants : variants}
+          variants={{
+            hidden: { opacity: 0, y: shouldReduceMotion ? 0 : "15%" },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: {
+                type: "spring",
+                stiffness: 200,
+                damping: 15,
+                duration: 0.5,
+              },
+            },
+          }}
           initial="hidden"
-          animate={"visible"}
-          transition={{ duration: 0.5 }}
+          animate="visible"
         >
           <h1>
             Hi, I'm <span className={classes.highlight}>Julia Pan</span>

@@ -10,11 +10,17 @@
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#25594f" />
     <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="loading.css" />
     <meta name="msapplication-TileColor" content="#ffc40d" />
     <meta name="theme-color" content="#d5ebee" />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="loader">
+        <div class="dot"></div>
+        <div class="text">Loading...</div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

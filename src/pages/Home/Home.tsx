@@ -1,5 +1,4 @@
 import { useLayoutEffect } from "react";
-import { motion } from "framer-motion";
 import LandingBanner from "@/homeSections/LandingSection";
 import SkillsSection from "@/homeSections/SkillsSection";
 import ProjectSection from "@/homeSections/ProjectSection";
@@ -17,15 +16,11 @@ export default function Home() {
   }, []);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3 }}
-    >
+    <>
       <LandingBanner />
       <SkillsSection />
       <ProjectSection />
       <AboutSection />
-    </motion.div>
+    </>
   );
 }
