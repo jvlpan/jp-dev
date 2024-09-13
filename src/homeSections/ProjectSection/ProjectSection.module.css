@@ -4,10 +4,11 @@
 .projects {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
+  gap: 1.5rem;
   padding: 0.5rem 2rem;
   margin: 0 auto;
-  width: 100%;
+  width: 90%;
+  overflow-x: hidden;
 }
 
 .filter {
@@ -40,7 +41,6 @@
   .projects {
     width: 85%;
     grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
-    gap: 3rem;
   }
   .filter {
     flex-direction: row;
@@ -57,39 +57,38 @@
 
 @media (min-width: 1200px) {
   .projects {
-    width: 80%;
-    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+    width: 90%;
+    grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
     grid-auto-flow: dense;
   }
 
   .project-featured {
-    grid-row: span 2 / auto;
+    padding: 1.5rem;
+    grid-row: span 1 / auto;
     grid-column: span 2 / auto;
   }
 
-  .project:nth-child(4),
-  .project:last-child:nth-child(3n),
-  .project:last-child:nth-child(3n - 1) {
+  .project:last-child:nth-child(4n) {
+    grid-column: span 3;
+  }
+
+  .project:last-child:nth-child(4n - 3) {
+    grid-column: span 2;
+  }
+
+  .project:last-child:nth-child(4n - 1) {
+    grid-column: span 4;
+  }
+
+  .project:last-child:nth-child(4n),
+  .project:last-child:nth-child(4n - 1),
+  .project:last-child:nth-child(4n - 3) {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  .project:nth-child(4) {
-    grid-column: span 2;
-  }
-
-  .project:last-child:nth-child(3n) {
-    grid-column: span 2;
-  }
-
-  .project:last-child:nth-child(3n - 1) {
-    grid-column: span 3;
-  }
-
-  .projects .project:nth-child(2) {
-    grid-column: span 1;
-    grid-row: span 2 / auto;
-    display: block;
+  .projects .project:nth-child(5) {
+    grid-column: span 2 / auto;
   }
 }

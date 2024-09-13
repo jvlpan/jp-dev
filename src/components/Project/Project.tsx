@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion, useAnimation, useReducedMotion } from "framer-motion";
+import useMediaQuery from "@/hooks/useMediaQuery";
 import classes from "./Project.module.css";
 import ExternalLink from "@/components/ExternalLink";
 import Tags from "@/components/Tags";
@@ -15,6 +16,7 @@ import {
 interface ProjectProps {
   project: ProjectType;
   className: string;
+  delay?: number;
 }
 
 export default function Project({
@@ -29,8 +31,11 @@ export default function Project({
     tags,
   },
   className,
+  delay,
 }: ProjectProps) {
   const shouldReduceMotion = useReducedMotion();
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+
   const linkAnimation = useAnimation();
   const textAnimation = useAnimation();
   const svgAnimation = useAnimation();
@@ -59,9 +64,17 @@ export default function Project({
         visible: {
           opacity: 1,
           x: 0,
-          transition: { type: "spring", duration: 1 },
+          transition: {
+            type: "spring",
+            duration: 1,
+            delay: isDesktop ? delay : 0,
+          },
         },
       }}
+      viewport={{ once: true, amount: 0.15 }}
+      initial="hidden"
+      exit="hidden"
+      whileInView="visible"
     >
       {is_featured && (
         <motion.div

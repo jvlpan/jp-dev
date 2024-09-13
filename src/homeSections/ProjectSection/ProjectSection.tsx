@@ -10,9 +10,7 @@ export default function ProjectSection() {
     projects: ProjectType[] | null;
     error: string | null;
   };
-
   const [searchParams, setSearchParams] = useSearchParams();
-
   const selectedTag = useTagStore((state) => state.selectedTag);
   const resetSelectedTag = useTagStore((state) => state.resetSelectedTag);
 
@@ -20,6 +18,14 @@ export default function ProjectSection() {
     searchParams.delete("filter");
     setSearchParams(searchParams);
     resetSelectedTag();
+  }
+
+  function computeDelay(index: number) {
+    if (index < 6) {
+      return (index % 3) * 0.15;
+    } else {
+      return ((index - 6) % 4) * 0.15;
+    }
   }
 
   const filteredProjects = selectedTag
@@ -51,22 +57,11 @@ export default function ProjectSection() {
             <button onClick={handleResetFilter}>Reset filter</button>
           </div>
         )}
-        <motion.ul
-          className={classes.projects}
-          variants={{
-            visible: {
-              transition: { staggerChildren: 0.1, staggerDirection: -1 },
-            },
-          }}
-          viewport={{ once: true, amount: 0.2 }}
-          initial="hidden"
-          exit="hidden"
-          whileInView="visible"
-        >
+        <motion.ul className={classes.projects}>
           <AnimatePresence>
             {filteredProjects &&
               filteredProjects.length > 0 &&
-              filteredProjects.map((project) => {
+              filteredProjects.map((project, index) => {
                 let cssClass = classes.project;
                 if (project.is_featured) cssClass = classes["project-featured"];
                 return (
@@ -74,6 +69,7 @@ export default function ProjectSection() {
                     key={project.id}
                     project={project}
                     className={cssClass}
+                    delay={computeDelay(index)}
                   />
                 );
               })}

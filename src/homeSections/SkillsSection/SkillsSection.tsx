@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import SkillsCard from "@/components/SkillsCard";
 import classes from "./SkillsSection.module.css";
 
@@ -24,20 +23,13 @@ export default function SkillsSection() {
   return (
     <section id="skills" className="nav-section">
       <h2>Skills & Experience</h2>
-      <motion.div
-        className={classes["skills-section"]}
-        variants={{
-          visible: { transition: { staggerChildren: 0.2 } },
-        }}
-        viewport={{ once: true, amount: 0.33 }}
-        initial="hidden"
-        whileInView="visible"
-      >
+      <div className={classes["skills-section"]}>
         <SkillsCard
           highlighted="Frontend"
           remainderTitle="Development"
           category="frontend"
           colors={frontendColors}
+          delay={0.15}
         >
           <p>
             Dedicated to creating efficient, engaging, and responsive web
@@ -52,6 +44,7 @@ export default function SkillsSection() {
           remainderTitle="Design"
           category="design"
           colors={designColors}
+          delay={0.3}
         >
           <p>
             Passionate about designing intuitive UIs with strong, cohesive
@@ -65,6 +58,7 @@ export default function SkillsSection() {
           remainderTitle="and Research"
           category="research"
           colors={researchColors}
+          delay={0.45}
         >
           <p>
             Experienced in cross-functional collaboration and research that
@@ -74,7 +68,7 @@ export default function SkillsSection() {
             visualizations.
           </p>
         </SkillsCard>
-      </motion.div>
+      </div>
     </section>
   );
 }

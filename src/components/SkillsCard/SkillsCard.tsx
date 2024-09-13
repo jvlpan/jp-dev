@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useLoaderData } from "react-router-dom";
+import useMediaQuery from "@/hooks/useMediaQuery";
 import Tags from "@/components/Tags";
 import TagType from "@/types/Tag";
 import classes from "./SkillsCard.module.css";
@@ -13,6 +14,7 @@ interface SkillsCardProps {
     color: string;
     "background-hover": string;
   };
+  delay?: number;
   children: React.ReactNode;
 }
 
@@ -21,6 +23,7 @@ export default function SkillsCard({
   remainderTitle,
   category,
   colors,
+  delay,
   children,
 }: SkillsCardProps) {
   const { tags, error } = useLoaderData() as {
@@ -28,6 +31,7 @@ export default function SkillsCard({
     error: string | null;
   };
   const shouldReduceMotion = useReducedMotion();
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   function getTagsByCategory(category: string, tags: TagType[]) {
     return tags
@@ -42,9 +46,16 @@ export default function SkillsCard({
         visible: {
           opacity: 1,
           y: 0,
-          transition: { type: "spring", duration: 1 },
+          transition: {
+            type: "spring",
+            duration: 1,
+            delay: isDesktop ? delay : 0,
+          },
         },
       }}
+      viewport={{ once: true, amount: 0.15 }}
+      initial="hidden"
+      whileInView="visible"
     >
       <h3>
         <span

@@ -18,11 +18,11 @@ export default function Navbar() {
     ids = sectionIds;
   }
 
-  const isStaticNav = useMediaQuery("(min-width: 768px)");
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   const hideNav = useAnimation();
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (!isStaticNav) {
+    if (!isDesktop) {
       const previous = scrollY.getPrevious();
       if (previous && latest > previous && latest > 200) {
         hideNav.start({ y: "-100%" });
@@ -65,19 +65,22 @@ export default function Navbar() {
         </span>
         <span className="sr-only">Home</span>
       </HashLink>
-      <div className={classes["nav-links"]}>
-        {ids.map((id) => {
-          return (
-            <HashLink
-              key={id}
-              to={`/#${id}`}
-              className={activeSection === id ? classes["active-link"] : ""}
-            >
-              {id}
-            </HashLink>
-          );
-        })}
-      </div>
+      {isDesktop && (
+        <div className={classes["nav-links"]}>
+          {ids.map((id) => {
+            return (
+              <HashLink
+                key={id}
+                to={`/#${id}`}
+                className={activeSection === id ? classes["active-link"] : ""}
+              >
+                {id}
+              </HashLink>
+            );
+          })}
+        </div>
+      )}
+      {!isDesktop && <button>Menu</button>}
     </motion.nav>
   );
 }
