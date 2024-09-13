@@ -1,0 +1,17 @@
+.home-link {
+  transition: all 200ms linear;
+  padding: 0.25rem;
+}
+
+.home-link:hover {
+  transform: scale(1.15);
+}
+
+.logo {
+  justify-self: start;
+}
+.logo > svg {
+  height: 3rem;
+  width: 3rem;
+  pointer-events: none;
+}

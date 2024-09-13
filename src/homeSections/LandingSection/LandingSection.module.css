@@ -9,11 +9,13 @@
   width: 100%;
   text-align: center;
   margin-top: 5rem;
+  padding: 0 1rem;
 }
 
 .landing-banner a {
   font-size: 1.25rem;
   margin-bottom: 4rem;
+  padding: 0 1rem;
 }
 
 .description {
