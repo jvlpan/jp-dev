@@ -1,8 +1,10 @@
 import { motion, useReducedMotion } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import ParallaxBanner from "@/components/ParallaxBanner";
-import classes from "./LandingSection.module.css";
+import StaggeredText from "@/components/StaggeredText";
 import backgroundImg from "@/assets/background.jpg";
+import featuredSVG from "@/assets/sparkle.svg";
+import classes from "./LandingSection.module.css";
 
 const typewriterStrings = [
   "a front-end developer",
@@ -63,12 +65,20 @@ export default function LandingBanner() {
           initial="hidden"
           animate="visible"
         >
-          <h1>
+          <h1 className={classes.title}>
             Hi, I'm <span className={classes.highlight}>Julia Pan</span>
+            <svg className={classes.sparkles}>
+              <use href={`${featuredSVG}#sparkle`} />
+            </svg>
           </h1>
           {description}
         </motion.div>
-        <a href="#skills">Take a deep dive into my work.</a>
+        <a href="#skills">
+          <StaggeredText
+            text="Take a deep dive into my work."
+            wrapperClassName={classes["link-wrapper"]}
+          />
+        </a>
       </ParallaxBanner>
     </section>
   );

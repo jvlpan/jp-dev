@@ -11,6 +11,7 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 import classes from "./Navbar.module.css";
 import MobileNavbar from "../MobileNavbar/MobileNavbar";
 import LogoLink from "../LogoLink";
+import StaggeredText from "../StaggeredText";
 
 const fallbackIds = ["skills", "projects", "about"];
 
@@ -46,6 +47,7 @@ export default function Navbar() {
     <>
       <motion.nav
         variants={{ visible: { y: 0 }, hidden: { y: "-100%" } }}
+        transition={{ duration: 0.15 }}
         animate={hideNav}
         className={classes.navbar}
         id="navbar"
@@ -55,12 +57,15 @@ export default function Navbar() {
           {isDesktop &&
             ids.map((id) => {
               return (
-                <HashLink
-                  key={id}
-                  to={`/#${id}`}
-                  className={activeSection === id ? classes["active-link"] : ""}
-                >
-                  {id}
+                <HashLink key={id} to={`/#${id}`}>
+                  <StaggeredText
+                    text={id}
+                    wrapperClassName={
+                      activeSection === id
+                        ? `${classes["active-link"]} ${classes["nav-button"]}`
+                        : classes["nav-button"]
+                    }
+                  />
                 </HashLink>
               );
             })}
@@ -69,6 +74,7 @@ export default function Navbar() {
             <button
               className={classes["nav-button"]}
               onClick={handleToggleMenu}
+              style={{ lineHeight: 0.8 }}
             >
               Menu
             </button>

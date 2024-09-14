@@ -13,9 +13,9 @@
   backdrop-filter: blur(10px) brightness(80%);
   -webkit-backdrop-filter: blur(10px) brightness(80%);
   transition: all 200ms linear;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
-.nav-links a,
 .nav-button {
   display: inline-block;
   padding: 0.5rem 1rem;
@@ -26,10 +26,10 @@
   background-color: transparent;
   color: light-teal;
   box-shadow: none;
-  text-transform: capitalize;
+  text-transform: uppercase;
 }
 
-.nav-links a:hover {
+.nav-links .nav-button:hover {
   background-color: lime;
   color: dark-teal-indigo;
 }

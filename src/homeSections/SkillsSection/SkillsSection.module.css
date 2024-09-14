@@ -15,12 +15,107 @@
   border: 3px solid dark-teal;
 }
 
+.react-svg {
+  width: 3rem;
+  height: 3rem;
+  top: -5rem;
+  left: 3rem;
+}
+
+.javascript-svg {
+  width: 3rem;
+  height: 3rem;
+  top: -4.5rem;
+  left: -1rem;
+}
+
+.javascript-svg > svg {
+  transform: rotate(-15deg);
+}
+
+.photoshop-svg {
+  width: 3rem;
+  height: 3rem;
+  bottom: 1.5rem;
+  right: 3rem;
+  z-index: 1;
+}
+.photoshop-svg > svg {
+  transform: rotate(-15deg);
+}
+
+.illustrator-svg {
+  width: 2.75rem;
+  height: 2.75rem;
+  bottom: 1.5rem;
+  left: 1rem;
+  z-index: 1;
+}
+.illustrator-svg > svg {
+  transform: rotate(-10deg);
+}
+
+.figma-svg {
+  width: 2rem;
+  height: 2rem;
+  top: -3.5rem;
+  right: 0.5rem;
+}
+.website-svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  top: -5rem;
+  right: -0.5rem;
+}
+.website-svg > svg {
+  transform: rotate(-15deg);
+}
+.collaboration-svg {
+  width: 4rem;
+  height: 4rem;
+  bottom: 1rem;
+  right: 1.5rem;
+}
+
 @media (min-width: 768px) {
   .skills-section {
     grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
   }
   .skills-section > :first-child {
     grid-column: span 2;
+  }
+  .react-svg {
+    width: 4rem;
+    height: 4rem;
+    top: -5.5rem;
+  }
+  .javascript-svg {
+    width: 4rem;
+    height: 4rem;
+    left: -2rem;
+  }
+  .photoshop-svg {
+    width: 4rem;
+    height: 4rem;
+  }
+  .illustrator-svg {
+    width: 4rem;
+    height: 4rem;
+  }
+  .figma-svg {
+    width: 3rem;
+    height: 3rem;
+  }
+  .website-svg {
+    width: 4rem;
+    height: 4rem;
+    top: -5.5rem;
+    right: 0.5rem;
+  }
+  .collaboration-svg {
+    width: 5rem;
+    height: 5rem;
+    bottom: 0;
   }
 }
 

@@ -1,0 +1,11 @@
+.staggered-text {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.hidden-text {
+  position: absolute;
+  inset: 0;
+}

@@ -48,7 +48,10 @@ export default function ProjectSection() {
     );
   } else {
     content = (
-      <div id="projects" className="nav-section">
+      <div
+        id="projects"
+        className={`nav-section ${classes["project-wrapper"]}`}
+      >
         {selectedTag && (
           <div className={classes.filter}>
             <p>

@@ -12,8 +12,10 @@
 }
 
 .featured-svg {
-  position: absolute;
-  top: -5%;
+  width: 5rem;
+  height: 5rem;
+  top: -4rem;
+  left: -1rem;
 }
 
 .project-link {
@@ -114,6 +116,12 @@
   .visit-link:hover {
     border-color: light-teal;
   }
+  .featured-svg {
+    width: 6rem;
+    height: 6rem;
+    top: -5rem;
+    left: -0.5rem;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -126,6 +134,12 @@
   .project-link a {
     font-size: 2rem;
     line-height: 1.2;
+  }
+  .featured-svg {
+    width: 10rem;
+    height: 10rem;
+    top: -4.5rem;
+    left: -1rem;
   }
 }
 

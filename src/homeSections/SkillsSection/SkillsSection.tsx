@@ -1,4 +1,12 @@
 import SkillsCard from "@/components/SkillsCard";
+import reactSVG from "@/assets/logos/react.svg";
+import javaScriptSVG from "@/assets/logos/javascript.svg";
+import photoshopSVG from "@/assets/logos/adobe-photoshop.svg";
+import illustratorSVG from "@/assets/logos/adobe-illustrator.svg";
+import figmaSVG from "@/assets/logos/figma.svg";
+import collaborationSVG from "@/assets/logos/collaboration.svg";
+import websiteSVG from "@/assets/logos/website.svg";
+
 import classes from "./SkillsSection.module.css";
 
 const frontendColors = {
@@ -19,6 +27,50 @@ const researchColors = {
   "background-hover": "#d5b6f9",
 };
 
+const frontendSVGs = [
+  {
+    svg: reactSVG,
+    id: "react",
+    className: classes["react-svg"],
+  },
+  {
+    svg: javaScriptSVG,
+    id: "javascript",
+    className: classes["javascript-svg"],
+  },
+];
+
+const designSVGs = [
+  {
+    svg: photoshopSVG,
+    id: "photoshop",
+    className: classes["photoshop-svg"],
+  },
+  {
+    svg: illustratorSVG,
+    id: "illustrator",
+    className: classes["illustrator-svg"],
+  },
+  {
+    svg: figmaSVG,
+    id: "figma",
+    className: classes["figma-svg"],
+  },
+];
+
+const researchSVG = [
+  {
+    svg: collaborationSVG,
+    id: "collaboration",
+    className: classes["collaboration-svg"],
+  },
+  {
+    svg: websiteSVG,
+    id: "website",
+    className: classes["website-svg"],
+  },
+];
+
 export default function SkillsSection() {
   return (
     <section id="skills" className="nav-section">
@@ -30,6 +82,7 @@ export default function SkillsSection() {
           category="frontend"
           colors={frontendColors}
           delay={0.15}
+          svgs={frontendSVGs}
         >
           <p>
             Dedicated to creating efficient, engaging, and responsive web
@@ -45,6 +98,7 @@ export default function SkillsSection() {
           category="design"
           colors={designColors}
           delay={0.3}
+          svgs={designSVGs}
         >
           <p>
             Passionate about designing intuitive UIs with strong, cohesive
@@ -59,6 +113,7 @@ export default function SkillsSection() {
           category="research"
           colors={researchColors}
           delay={0.45}
+          svgs={researchSVG}
         >
           <p>
             Experienced in cross-functional collaboration and research that

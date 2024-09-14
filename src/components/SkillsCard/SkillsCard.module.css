@@ -5,6 +5,7 @@
   --background-color: dark-teal;
   --background-color-hover: lime;
   --color-text: lime;
+  position: relative;
   background-color: dark-green-teal;
   padding: 0.5rem 1rem 1.5rem;
 }
