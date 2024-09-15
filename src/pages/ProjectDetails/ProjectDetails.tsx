@@ -41,10 +41,22 @@ export default function ProjectDetails() {
               const [slug, videoName] = src.split("/");
               const videoUrl = getImageUrl(slug, videoName);
               return (
-                <video autoPlay controls muted loop>
-                  <source src={videoUrl} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <>
+                  <span id="videoDesc" className="sr-only">
+                    {alt}
+                  </span>
+                  <video
+                    autoPlay
+                    controls
+                    muted
+                    loop
+                    aria-describedby="videoDesc"
+                    style={{ padding: "0.5rem" }}
+                  >
+                    <source src={videoUrl} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </>
               );
             }
             if (src) {
