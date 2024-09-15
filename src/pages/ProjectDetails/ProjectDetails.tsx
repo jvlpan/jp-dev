@@ -37,12 +37,22 @@ export default function ProjectDetails() {
       <Markdown
         components={{
           img({ alt, src }) {
+            if (src && src.endsWith(".mp4")) {
+              const [slug, videoName] = src.split("/");
+              const videoUrl = getImageUrl(slug, videoName);
+              return (
+                <video autoPlay controls muted loop>
+                  <source src={videoUrl} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              );
+            }
             if (src) {
               const [slug, imageName] = src.split("/");
               const imageUrl = getImageUrl(slug, imageName);
-
               return <img src={imageUrl} alt={alt} />;
             }
+            return null;
           },
           em(props) {
             const { ...rest } = props;
