@@ -46,7 +46,6 @@ export default function ProjectDetails() {
                     {alt}
                   </span>
                   <video
-                    autoPlay
                     controls
                     muted
                     loop
