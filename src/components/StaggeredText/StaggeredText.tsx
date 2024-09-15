@@ -21,7 +21,7 @@ export default function StaggeredText({
       <div
         className={wrapperClassName ? wrapperClassName : ""}
         style={{
-          lineHeight: 0.82,
+          lineHeight: 0.85,
         }}
       >
         {text}
@@ -48,7 +48,7 @@ export default function StaggeredText({
         animate={hoverAnimation}
         className={classes["staggered-text"]}
         style={{
-          lineHeight: 0.82,
+          lineHeight: 0.85,
         }}
       >
         <div>
