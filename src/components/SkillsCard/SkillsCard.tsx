@@ -16,7 +16,13 @@ interface SkillsCardProps {
     "background-hover": string;
   };
   delay?: number;
-  svgs?: { svg: string; id: string; className: string }[];
+  svgs?: {
+    svgComponent: React.FC<
+      React.SVGProps<SVGSVGElement> & { title?: string | undefined }
+    >;
+    title: string;
+    className: string;
+  }[];
   children: React.ReactNode;
 }
 
@@ -87,11 +93,9 @@ export default function SkillsCard({
           <PopupSVG
             animation={svgAnimation}
             className={svg.className}
-            key={svg.id}
+            key={svg.title}
           >
-            <svg>
-              <use href={`${svg.svg}#${svg.id}`} />
-            </svg>
+            <svg.svgComponent title={svg.title} />
           </PopupSVG>
         ))}
       <h3>

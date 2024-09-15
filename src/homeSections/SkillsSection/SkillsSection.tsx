@@ -1,11 +1,11 @@
 import SkillsCard from "@/components/SkillsCard";
-import reactSVG from "@/assets/logos/react.svg";
-import javaScriptSVG from "@/assets/logos/javascript.svg";
-import photoshopSVG from "@/assets/logos/adobe-photoshop.svg";
-import illustratorSVG from "@/assets/logos/adobe-illustrator.svg";
-import figmaSVG from "@/assets/logos/figma.svg";
-import collaborationSVG from "@/assets/logos/collaboration.svg";
-import websiteSVG from "@/assets/logos/website.svg";
+import ReactSVG from "@/assets/logos/react.svg?react";
+import JavaScriptSVG from "@/assets/logos/javascript.svg?react";
+import PhotoshopSVG from "@/assets/logos/adobe-photoshop.svg?react";
+import IllustratorSVG from "@/assets/logos/adobe-illustrator.svg?react";
+import FigmaSVG from "@/assets/logos/figma.svg?react";
+import CollaborationSVG from "@/assets/logos/collaboration.svg?react";
+import WebsiteSVG from "@/assets/logos/website.svg?react";
 
 import classes from "./SkillsSection.module.css";
 
@@ -29,44 +29,44 @@ const researchColors = {
 
 const frontendSVGs = [
   {
-    svg: reactSVG,
-    id: "react",
+    svgComponent: ReactSVG,
+    title: "React Icon",
     className: classes["react-svg"],
   },
   {
-    svg: javaScriptSVG,
-    id: "javascript",
+    svgComponent: JavaScriptSVG,
+    title: "JavaScript Icon",
     className: classes["javascript-svg"],
   },
 ];
 
 const designSVGs = [
   {
-    svg: photoshopSVG,
-    id: "photoshop",
+    svgComponent: PhotoshopSVG,
+    title: "Adobe Photoship Icon",
     className: classes["photoshop-svg"],
   },
   {
-    svg: illustratorSVG,
-    id: "illustrator",
+    svgComponent: IllustratorSVG,
+    title: "Adobe Illutrator Icon",
     className: classes["illustrator-svg"],
   },
   {
-    svg: figmaSVG,
-    id: "figma",
+    svgComponent: FigmaSVG,
+    title: "Figma Icon",
     className: classes["figma-svg"],
   },
 ];
 
 const researchSVG = [
   {
-    svg: collaborationSVG,
-    id: "collaboration",
+    svgComponent: CollaborationSVG,
+    title: "Handshake Icon to represent collaboration",
     className: classes["collaboration-svg"],
   },
   {
-    svg: websiteSVG,
-    id: "website",
+    svgComponent: WebsiteSVG,
+    title: "Generic Browser Window Icon",
     className: classes["website-svg"],
   },
 ];

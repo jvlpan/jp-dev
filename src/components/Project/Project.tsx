@@ -6,7 +6,7 @@ import ExternalLink from "@/components/ExternalLink";
 import Tags from "@/components/Tags";
 import PopupSVG from "@/components/PopupSVG";
 import ProjectType from "@/types/Project";
-import featuredSVG from "@/assets/sparkle.svg";
+import FeaturedSVG from "@/assets/sparkle.svg?react";
 import {
   linkVariants,
   textVariants,
@@ -83,7 +83,7 @@ export default function Project({
       {is_featured && (
         <PopupSVG animation={svgAnimation} className={classes["featured-svg"]}>
           <svg>
-            <use href={`${featuredSVG}#sparkle`} />
+            <FeaturedSVG title={"Decorations for featured project"} />
           </svg>
         </PopupSVG>
       )}

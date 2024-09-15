@@ -3,7 +3,7 @@ import Typewriter from "typewriter-effect";
 import ParallaxBanner from "@/components/ParallaxBanner";
 import StaggeredText from "@/components/StaggeredText";
 import backgroundImg from "@/assets/background.jpg";
-import featuredSVG from "@/assets/sparkle.svg";
+import SparkleSVG from "@/assets/sparkle.svg?react";
 import classes from "./LandingSection.module.css";
 
 const typewriterStrings = [
@@ -67,9 +67,10 @@ export default function LandingBanner() {
         >
           <h1 className={classes.title}>
             Hi, I'm <span className={classes.highlight}>Julia Pan</span>
-            <svg className={classes.sparkles}>
-              <use href={`${featuredSVG}#sparkle`} />
-            </svg>
+            <SparkleSVG
+              className={classes.sparkles}
+              title={"Decorations for featured project"}
+            />
           </h1>
           {description}
         </motion.div>
