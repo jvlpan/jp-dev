@@ -4,18 +4,8 @@ import { getImageUrl } from "./projectdetails.loader";
 import Markdown from "react-markdown";
 import ExternalLink from "@/components/ExternalLink";
 import Tags from "@/components/Tags";
+import ProjectType from "@/types/Project";
 import classes from "./ProjectDetails.module.css";
-
-interface Project {
-  id: number;
-  title: string;
-  image_url: string;
-  alt: string;
-  description: string;
-  detailed_description: string;
-  link: string;
-  tags: string[];
-}
 
 const variants = {
   hidden: { opacity: 0, y: 30 },
@@ -28,7 +18,7 @@ const reducedMotionVariants = {
 };
 
 export default function ProjectDetails() {
-  const project = useLoaderData() as Project;
+  const project = useLoaderData() as ProjectType;
   const shouldReduceMotion = useReducedMotion();
   let content;
 
@@ -83,6 +73,28 @@ export default function ProjectDetails() {
     );
   }
 
+  let linkContent;
+
+  if (project.category === "portfolio") {
+    linkContent = (
+      <div className={classes["visit-link"]}>You are here &#x2728;</div>
+    );
+  } else if (project.link) {
+    const linkText =
+      project.category === "website" ? "Visit the project" : "Learn more";
+    linkContent = (
+      <ExternalLink link={project.link} className={classes["visit-link"]}>
+        {linkText}
+      </ExternalLink>
+    );
+  } else {
+    linkContent = (
+      <motion.div className={classes["visit-link"]}>
+        No link available
+      </motion.div>
+    );
+  }
+
   return (
     project && (
       <motion.article
@@ -98,7 +110,7 @@ export default function ProjectDetails() {
           <div className={classes["image-wrapper"]}>
             <img
               className={classes["project-image"]}
-              alt={project.alt}
+              alt={project.image_alt}
               src={project.image_url}
             />
           </div>
@@ -113,9 +125,7 @@ export default function ProjectDetails() {
             </h3>
             <Tags tags={project.tags} shouldNavigate />
           </div>
-          <ExternalLink link={project.link} className={classes["visit-link"]}>
-            Visit the project
-          </ExternalLink>
+          {linkContent}
         </section>
         <section className={classes.markdown}>{content}</section>
         <Link to="/" className={classes["link-to-home"]}>

@@ -56,6 +56,11 @@ a {
   src: url("./assets/fonts/SpaceGrotesk.ttf");
 }
 
+@font-face {
+  font-family: "Work Sans";
+  src: url("./assets/fonts/WorkSans.ttf");
+}
+
 :root {
   --color-light-teal: #ecfeff;
   --color-dark-teal-indigo: #0e1e1b;
@@ -75,7 +80,7 @@ a {
 }
 
 :is(h1, h2, h3, h4, h5, h6) {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Work Sans";
 }
 
 body {

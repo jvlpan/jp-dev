@@ -22,6 +22,7 @@ interface ProjectProps {
 export default function Project({
   project: {
     slug,
+    category,
     title,
     image_url: img,
     image_alt: alt,
@@ -54,6 +55,43 @@ export default function Project({
       textAnimation.start("default");
       svgAnimation.start("default");
     }
+  }
+
+  let linkContent;
+
+  if (category === "portfolio") {
+    linkContent = (
+      <motion.div
+        className={classes["no-link"]}
+        animate={linkAnimation}
+        variants={linkVariants}
+      >
+        You are here &#x2728;
+      </motion.div>
+    );
+  } else if (link) {
+    const linkText =
+      category === "website" ? "Visit the project" : "Learn more";
+    linkContent = (
+      <ExternalLink
+        link={link}
+        className={classes["visit-link"]}
+        animate={linkAnimation}
+        variants={linkVariants}
+      >
+        {linkText}
+      </ExternalLink>
+    );
+  } else {
+    linkContent = (
+      <motion.div
+        className={classes["no-link"]}
+        animate={linkAnimation}
+        variants={linkVariants}
+      >
+        No link available
+      </motion.div>
+    );
   }
 
   return (
@@ -107,14 +145,7 @@ export default function Project({
 
         <Tags tags={tags} className={classes["skills-list"]} />
         <div className={classes["swap-text"]}>
-          <ExternalLink
-            link={link}
-            className={classes["visit-link"]}
-            animate={linkAnimation}
-            variants={linkVariants}
-          >
-            Visit the project
-          </ExternalLink>
+          {linkContent}
           <motion.div
             animate={textAnimation}
             variants={

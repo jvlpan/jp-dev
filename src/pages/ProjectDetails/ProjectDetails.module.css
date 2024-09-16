@@ -7,16 +7,16 @@
   suffix: " ";
 }
 
-h2,
-h3 {
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-}
-
 .project {
   width: 90%;
   margin: 0 auto;
   text-align: left;
+}
+
+.project h2,
+.project h3 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .header {
@@ -24,6 +24,7 @@ h3 {
 }
 
 .project-title {
+  margin-top: 0;
   font-weight: 700;
 }
 

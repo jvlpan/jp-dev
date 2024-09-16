@@ -17,6 +17,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
       `
     id,
     slug,
+    category,
     title,
     image_name,
     image_alt,

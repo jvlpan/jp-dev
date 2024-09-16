@@ -9,6 +9,7 @@ export async function loader() {
         `
       id,
       slug,
+      category,
       title,
       image_name,
       image_alt,

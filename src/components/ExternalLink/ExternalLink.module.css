@@ -1,9 +1,19 @@
+@value colors: "@/colors.css";
+@value light-teal from colors;
+
 .visit-link {
   display: inline-block;
+  padding: 0.25rem;
   border: 2px solid transparent;
   border-radius: 0.375rem;
   transition: border-color 0.25s;
+  text-decoration: underline;
 }
+
+.visit-link:hover {
+  border-color: light-teal;
+}
+
 .visit-link > svg {
   height: 1rem;
   width: 1rem;

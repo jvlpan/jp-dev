@@ -73,18 +73,24 @@
 
 .swap-text {
   position: relative;
+  margin-bottom: 1rem;
 }
 
 .visit-link {
   position: relative;
-  display: inline-block;
-  padding: 0.25rem;
   margin-top: 0.5rem;
+}
+
+.no-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.25rem;
 }
 
 .see-details-text {
   position: absolute;
-  top: 50%;
+  padding: 0.25rem;
+  top: 25%;
   left: 50%;
   text-align: center;
   white-space: nowrap;
@@ -113,9 +119,7 @@
     filter: grayscale(0);
     transform: scale(1);
   }
-  .visit-link:hover {
-    border-color: light-teal;
-  }
+
   .featured-svg {
     width: 5rem;
     height: 5rem;

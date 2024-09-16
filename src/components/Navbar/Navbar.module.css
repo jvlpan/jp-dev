@@ -13,7 +13,7 @@
   backdrop-filter: blur(10px) brightness(80%);
   -webkit-backdrop-filter: blur(10px) brightness(80%);
   transition: all 200ms linear;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Work Sans";
 }
 
 .nav-button {
