@@ -143,7 +143,7 @@ export default function Project({
       <div className={classes["text-block"]}>
         <p className={classes.description}>{description}</p>
 
-        <Tags tags={tags} className={classes["skills-list"]} />
+        <Tags tags={tags} className={classes["skills-list"]} shouldScroll />
         <div className={classes["swap-text"]}>
           {linkContent}
           <motion.div

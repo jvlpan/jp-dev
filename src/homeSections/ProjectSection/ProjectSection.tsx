@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import { useLoaderData, useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTagStore } from "@/store/tagStore";
@@ -12,7 +13,11 @@ export default function ProjectSection() {
   };
   const [searchParams, setSearchParams] = useSearchParams();
   const selectedTag = useTagStore((state) => state.selectedTag);
+  const shouldScroll = useTagStore((state) => state.shouldScrollOnSelect);
   const resetSelectedTag = useTagStore((state) => state.resetSelectedTag);
+  const setShouldScrollOnSelect = useTagStore(
+    (state) => state.setShouldScrollOnSelect
+  );
 
   function handleResetFilter() {
     searchParams.delete("filter");
@@ -34,6 +39,14 @@ export default function ProjectSection() {
       )
     : projects;
 
+  const projectsRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (projectsRef.current && shouldScroll) {
+      projectsRef.current.scrollIntoView({ behavior: "smooth" });
+      setShouldScrollOnSelect(false);
+    }
+  }, [shouldScroll, setShouldScrollOnSelect]);
+
   let content;
 
   if (error) {
@@ -51,6 +64,7 @@ export default function ProjectSection() {
       <div
         id="projects"
         className={`nav-section ${classes["project-wrapper"]}`}
+        ref={projectsRef}
       >
         {selectedTag && (
           <div className={classes.filter}>
@@ -66,7 +80,11 @@ export default function ProjectSection() {
               filteredProjects.length > 0 &&
               filteredProjects.map((project, index) => {
                 let cssClass = classes.project;
+                const numProjects = filteredProjects.length;
                 if (project.is_featured) cssClass = classes["project-featured"];
+                if (numProjects >= 6) {
+                  cssClass += ` ${classes["align-projects"]}`;
+                }
                 return (
                   <Project
                     key={project.id}

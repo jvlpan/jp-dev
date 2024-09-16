@@ -9,21 +9,21 @@
 
 .text-block {
   width: 80%;
+  margin-top: 1rem;
 }
 
 .text-block p {
-  margin: 1rem 0;
+  margin-bottom: 1rem;
 }
 
 .card {
-  width: 50%;
+  width: 75%;
   height: 100%;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  padding: 1rem;
-  margin: 2rem;
+  margin: 0 2rem;
   z-index: 1;
 }
 
@@ -36,7 +36,7 @@
 
 .wrapper {
   width: 100%;
-  transition: all 0.5s;
+  transition: all 1s;
   position: relative;
   z-index: -1;
 }
@@ -44,7 +44,7 @@
 .title {
   width: 75%;
   position: absolute;
-  transition: transform 0.5s;
+  transition: transform 1s;
   z-index: 1;
   border-radius: 1rem;
 }
@@ -53,12 +53,12 @@
   width: 100%;
   opacity: 0;
   position: absolute;
-  transition: all 0.5s;
+  transition: all 1s;
   border-radius: 1rem;
 }
 
 .card:hover .wrapper {
-  transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+  transform: perspective(900px) rotateX(5deg) translateZ(0);
   box-shadow: 0 20px 32px -8px rgba(0, 0, 0, 0.9);
   filter: brightness(40%);
 }
@@ -79,6 +79,7 @@
   }
   .text-block {
     width: 50%;
+    margin-top: 0;
   }
   .card {
     width: 30%;
@@ -90,6 +91,34 @@
     width: 35%;
   }
   .card {
-    width: 25%;
+    width: 20%;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .wrapper {
+    transition: all 0.5s;
+  }
+
+  .title {
+    transition: transform 0.5s;
+  }
+
+  .character {
+    transition: all 0.5s;
+  }
+  .card:hover .wrapper {
+    transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+    box-shadow: 0 20px 32px -8px rgba(0, 0, 0, 0.9);
+    filter: brightness(40%);
+  }
+
+  .card:hover .title {
+    transform: translateY(-50px);
+  }
+
+  .card:hover .character {
+    opacity: 1;
+    transform: translateY(-30%);
   }
 }

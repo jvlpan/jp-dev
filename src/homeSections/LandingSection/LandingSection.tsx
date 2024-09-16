@@ -16,7 +16,7 @@ export default function LandingBanner() {
   const shouldReduceMotion = useReducedMotion();
 
   let description = (
-    <h2 className={classes.description}>
+    <h2 className={classes.description} style={{ width: "75%" }}>
       I&apos;m a <span className={classes.highlight}>front-end developer</span>{" "}
       and a <span className={classes.highlight}>UI designer</span>
     </h2>
