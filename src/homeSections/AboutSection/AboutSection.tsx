@@ -18,8 +18,12 @@ export default function AboutSection() {
             className={`${classes.card} ${
               !isDesktop && isDrawingActive ? classes["active-card"] : ""
             }`}
-            onHoverStart={() => setIsDrawingActive(true)}
-            onHoverEnd={() => setIsDrawingActive(false)}
+            onHoverStart={() => {
+              if (isDesktop) setIsDrawingActive(true);
+            }}
+            onHoverEnd={() => {
+              if (!isDesktop) setIsDrawingActive(false);
+            }}
             onTouchStart={(event) => {
               event.preventDefault();
               setIsDrawingActive((prevState) => !prevState);
