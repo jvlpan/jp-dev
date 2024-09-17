@@ -1,5 +1,5 @@
 @value colors: "@/colors.css";
-@value dark-teal from colors;
+@value dark-teal, lime from colors;
 
 .scroll-margin {
   scroll-margin-top: 75px;
@@ -16,10 +16,14 @@
 }
 
 .react-svg {
+  top: -1.25rem;
+  left: 3rem;
+  color: #61dafb;
+}
+
+.react-svg > svg {
   width: 3rem;
   height: 3rem;
-  top: -1rem;
-  left: 3rem;
 }
 
 .javascript-svg {
@@ -62,19 +66,23 @@
   right: 0.5rem;
 }
 .website-svg {
-  width: 2.5rem;
-  height: 2.5rem;
-  top: -1rem;
+  top: -1.5rem;
   right: -1rem;
+  color: #9969d1;
 }
 .website-svg > svg {
   transform: rotate(-15deg);
+  width: 3rem;
+  height: 3rem;
 }
 .collaboration-svg {
-  width: 4rem;
-  height: 4rem;
   bottom: -2rem;
   right: -1rem;
+  color: lime;
+}
+.collaboration-svg > svg {
+  width: 4rem;
+  height: 4rem;
 }
 
 @media (min-width: 768px) {
@@ -85,10 +93,12 @@
     grid-column: span 2;
   }
   .react-svg {
+    top: -2.25rem;
+    left: 4rem;
+  }
+  .react-svg > svg {
     width: 4rem;
     height: 4rem;
-    top: -2.5rem;
-    left: 4rem;
   }
   .javascript-svg {
     width: 4rem;
@@ -110,12 +120,14 @@
     height: 3rem;
   }
   .website-svg {
-    width: 4rem;
-    height: 4rem;
-    top: -2.5rem;
-    right: -1.5rem;
+    top: -3rem;
+    right: -2rem;
   }
-  .collaboration-svg {
+  .website-svg > svg {
+    width: 5rem;
+    height: 5rem;
+  }
+  .collaboration-svg > svg {
     width: 5rem;
     height: 5rem;
   }

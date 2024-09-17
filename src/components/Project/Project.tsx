@@ -7,6 +7,7 @@ import Tags from "@/components/Tags";
 import PopupSVG from "@/components/PopupSVG";
 import ProjectType from "@/types/Project";
 import FeaturedSVG from "@/assets/sparkle.svg?react";
+import { FaLock } from "react-icons/fa";
 import {
   linkVariants,
   textVariants,
@@ -130,15 +131,28 @@ export default function Project({
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <Link
-          to={`/projects/${slug.toString()}`}
-          title={`${title} Project Details`}
-        >
-          {title}
-          <div className={classes["project-image-container"]}>
-            <img className={classes["project-image"]} alt={alt} src={img} />
+        {slug ? (
+          <Link
+            to={`/projects/${slug.toString()}`}
+            title={`${title} Project Details`}
+            className={classes["project-link-title"]}
+          >
+            {title}
+            <div className={classes["project-image-container"]}>
+              <img className={classes["project-image"]} alt={alt} src={img} />
+            </div>
+          </Link>
+        ) : (
+          <div className={classes["project-link-title"]}>
+            {title}
+            <div className={classes["project-image-container"]}>
+              <div className={classes["project-image-overlay"]}>
+                <FaLock />
+              </div>
+              <img className={classes["project-image"]} alt={alt} src={img} />
+            </div>
           </div>
-        </Link>
+        )}
       </h3>
       <div className={classes["text-block"]}>
         <p className={classes.description}>{description}</p>
@@ -158,7 +172,7 @@ export default function Project({
             }
             className={classes["see-details-text"]}
           >
-            See project details
+            {slug ? "See project details" : "Project details not available"}
           </motion.div>
         </div>
       </div>

@@ -6,7 +6,7 @@
   padding: 0.25rem;
   border: 2px solid transparent;
   border-radius: 0.375rem;
-  transition: border-color 0.25s;
+  transition: border-color 300ms ease-out;
   text-decoration: underline;
 }
 

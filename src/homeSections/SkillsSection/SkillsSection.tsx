@@ -1,11 +1,11 @@
 import SkillsCard from "@/components/SkillsCard";
-import ReactSVG from "@/assets/logos/react.svg?react";
+import { FaReact } from "react-icons/fa";
 import JavaScriptSVG from "@/assets/logos/javascript.svg?react";
 import PhotoshopSVG from "@/assets/logos/adobe-photoshop.svg?react";
 import IllustratorSVG from "@/assets/logos/adobe-illustrator.svg?react";
 import FigmaSVG from "@/assets/logos/figma.svg?react";
-import CollaborationSVG from "@/assets/logos/collaboration.svg?react";
-import WebsiteSVG from "@/assets/logos/website.svg?react";
+import { FaHandshake } from "react-icons/fa";
+import { PiBrowsersLight } from "react-icons/pi";
 
 import classes from "./SkillsSection.module.css";
 
@@ -29,7 +29,7 @@ const researchColors = {
 
 const frontendSVGs = [
   {
-    svgComponent: ReactSVG,
+    svgComponent: FaReact,
     title: "React Icon",
     className: classes["react-svg"],
   },
@@ -60,12 +60,12 @@ const designSVGs = [
 
 const researchSVG = [
   {
-    svgComponent: CollaborationSVG,
+    svgComponent: FaHandshake,
     title: "Handshake Icon to represent collaboration",
     className: classes["collaboration-svg"],
   },
   {
-    svgComponent: WebsiteSVG,
+    svgComponent: PiBrowsersLight,
     title: "Generic Browser Window Icon",
     className: classes["website-svg"],
   },

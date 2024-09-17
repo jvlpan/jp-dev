@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import Tags from "@/components/Tags";
 import TagType from "@/types/Tag";
+import { IconType } from "react-icons";
 import PopupSVG from "@/components/PopupSVG";
 import classes from "./SkillsCard.module.css";
 
@@ -17,9 +18,9 @@ interface SkillsCardProps {
   };
   delay?: number;
   svgs?: {
-    svgComponent: React.FC<
-      React.SVGProps<SVGSVGElement> & { title?: string | undefined }
-    >;
+    svgComponent:
+      | React.FC<React.SVGProps<SVGSVGElement> & { title?: string | undefined }>
+      | IconType;
     title: string;
     className: string;
   }[];
