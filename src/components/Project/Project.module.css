@@ -43,7 +43,7 @@
 
 .project-image-overlay {
   position: relative;
-  opacity: 0;
+  opacity: 1;
   width: 100%;
   height: 100%;
   display: flex;
@@ -51,6 +51,7 @@
   align-items: center;
   transition: opacity 300ms ease-out;
   z-index: 1;
+  pointer-events: none;
 }
 
 .project-image-overlay::before {
@@ -70,10 +71,6 @@
   color: lime;
   filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
   z-index: 1;
-}
-
-.project-link:active .project-image-overlay {
-  opacity: 1;
 }
 
 .project-image {
@@ -157,7 +154,9 @@
     filter: grayscale(0);
     transform: scale(1);
   }
-
+  .project-image-overlay {
+    opacity: 0;
+  }
   .featured-svg {
     width: 5rem;
     height: 5rem;
