@@ -20,7 +20,10 @@ export default function AboutSection() {
             }`}
             onHoverStart={() => setIsDrawingActive(true)}
             onHoverEnd={() => setIsDrawingActive(false)}
-            onTouchStart={() => setIsDrawingActive((prevState) => !prevState)}
+            onTouchStart={(event) => {
+              event.preventDefault();
+              setIsDrawingActive((prevState) => !prevState);
+            }}
           >
             <div className={classes.wrapper}>
               <img
