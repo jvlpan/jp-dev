@@ -95,9 +95,15 @@
 
   .projects .project:last-child:nth-child(4) {
     grid-column: span 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .projects .project:last-child:nth-child(5) {
     grid-column: span 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

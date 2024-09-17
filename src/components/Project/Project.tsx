@@ -110,11 +110,11 @@ export default function Project({
           transition: {
             type: "spring",
             duration: 1,
-            delay: isDesktop ? delay : 0,
+            delay: isDesktop && delay ? delay + 0.1 : 0,
           },
         },
       }}
-      viewport={{ once: true, amount: 0.15 }}
+      viewport={{ once: true, amount: 0.1 }}
       initial="hidden"
       exit="hidden"
       whileInView="visible"
