@@ -65,20 +65,17 @@
   border-radius: 1rem;
 }
 
-.card:hover .wrapper,
 .active-card .wrapper {
   transform: perspective(900px) rotateX(5deg) translateZ(0);
   box-shadow: 0 20px 32px -8px rgba(0, 0, 0, 0.9);
   filter: brightness(40%);
 }
 
-.card:hover .title,
 .active-card .title {
   transform: translateY(-25px);
   background-color: transparent;
 }
 
-.card:hover .character,
 .active-card .character {
   opacity: 1;
   transform: translateY(-15%);
@@ -95,6 +92,21 @@
   }
   .card {
     width: 30%;
+  }
+  .card:hover .wrapper {
+    transform: perspective(900px) rotateX(5deg) translateZ(0);
+    box-shadow: 0 20px 32px -8px rgba(0, 0, 0, 0.9);
+    filter: brightness(40%);
+  }
+
+  .card:hover .title {
+    transform: translateY(-25px);
+    background-color: transparent;
+  }
+
+  .card:hover .character {
+    opacity: 1;
+    transform: translateY(-15%);
   }
 }
 
@@ -119,16 +131,26 @@
   .character {
     transition: all 500ms ease-in-out;
   }
-  .card:hover .wrapper,
   .active-card .wrapper {
     transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
   }
-  .card:hover .title,
   .active-card .title {
     transform: translateY(-40px);
   }
-  .card:hover .character,
   .active-card .character {
+    opacity: 1;
+    transform: translateY(-20%);
+  }
+}
+
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .card:hover .wrapper {
+    transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+  }
+  .card:hover .title {
+    transform: translateY(-40px);
+  }
+  .card:hover .character {
     opacity: 1;
     transform: translateY(-20%);
   }
