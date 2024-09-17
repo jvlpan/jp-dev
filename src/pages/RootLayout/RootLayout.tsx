@@ -1,5 +1,7 @@
 import { useLayoutEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
+import ReactLenis from "lenis/react";
+import useMediaQuery from "@/hooks/useMediaQuery";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SkipNavigation from "@/components/SkipNavigation";
@@ -11,7 +13,9 @@ export default function RootLayout() {
   useLayoutEffect(() => {
     document.documentElement.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [location.pathname]);
-  return (
+
+  const shouldReduceMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
+  const body = (
     <>
       <Navbar />
       <SkipNavigation id={"projects"} />
@@ -21,5 +25,18 @@ export default function RootLayout() {
       <SideDecorations />
       <Footer />
     </>
+  );
+
+  return shouldReduceMotion ? (
+    body
+  ) : (
+    <ReactLenis
+      root
+      options={{
+        lerp: 0.07,
+      }}
+    >
+      {body}
+    </ReactLenis>
   );
 }
