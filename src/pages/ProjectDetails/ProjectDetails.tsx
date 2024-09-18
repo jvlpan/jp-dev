@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useLenis } from "lenis/react";
 import { getImageUrl } from "./projectdetails.loader";
 import Markdown from "react-markdown";
 import ExternalLink from "@/components/ExternalLink";
@@ -7,19 +9,13 @@ import Tags from "@/components/Tags";
 import ProjectType from "@/types/Project";
 import classes from "./ProjectDetails.module.css";
 
-const variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const reducedMotionVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
-};
-
 export default function ProjectDetails() {
-  const project = useLoaderData() as ProjectType;
-  const shouldReduceMotion = useReducedMotion();
+  const lenis = useLenis();
+  useEffect(() => {
+    if (lenis) lenis.scrollTo(0, { immediate: true });
+  }, [lenis]);
+
+  const [project] = useState<ProjectType>(useLoaderData() as ProjectType);
   let content;
 
   if (project.detailed_description) {
@@ -40,6 +36,8 @@ export default function ProjectDetails() {
                     muted
                     loop
                     aria-describedby="videoDesc"
+                    preload="metadata"
+                    poster={project.image_url}
                     style={{ padding: "0.5rem" }}
                   >
                     <source src={videoUrl} type="video/mp4" />
@@ -97,13 +95,7 @@ export default function ProjectDetails() {
 
   return (
     project && (
-      <motion.article
-        initial="hidden"
-        animate="visible"
-        variants={shouldReduceMotion ? reducedMotionVariants : variants}
-        transition={{ duration: 0.3 }}
-        className={classes.project}
-      >
+      <article className={classes.project}>
         <p className={classes.header}>Project Details</p>
         <h1 className={classes["project-title"]}>{project.title}</h1>
         <section className={classes.introduction}>
@@ -131,7 +123,7 @@ export default function ProjectDetails() {
         <Link to="/" className={classes["link-to-home"]}>
           Return to Home
         </Link>
-      </motion.article>
+      </article>
     )
   );
 }

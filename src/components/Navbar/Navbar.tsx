@@ -67,7 +67,7 @@ export default function Navbar() {
                   key={id}
                   to={`/#${id}`}
                   onClick={() => {
-                    if (lenis) lenis.scrollTo(`#${id}`);
+                    if (lenis) lenis.scrollTo(`#${id}`, { offset: -75 });
                   }}
                 >
                   <StaggeredText

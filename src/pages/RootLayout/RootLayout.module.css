@@ -1,4 +1,26 @@
+@value colors: "@/colors.css";
+@value dark-teal-indigo from colors;
+
 .main > section,
 .main > div {
   margin-bottom: 5rem;
+}
+
+.slide-in,
+.slide-out {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: dark-teal-indigo;
+  z-index: 2;
+}
+
+.slide-in {
+  transform-origin: bottom;
+}
+
+.slide-out {
+  transform-origin: top;
 }

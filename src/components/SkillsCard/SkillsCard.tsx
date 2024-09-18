@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion, useReducedMotion, useAnimation } from "framer-motion";
 import { useLoaderData } from "react-router-dom";
 import useMediaQuery from "@/hooks/useMediaQuery";
@@ -27,6 +28,11 @@ interface SkillsCardProps {
   children: React.ReactNode;
 }
 
+interface LoaderState {
+  tags: TagType[] | null;
+  error: string | null;
+}
+
 export default function SkillsCard({
   highlighted,
   remainderTitle,
@@ -36,10 +42,9 @@ export default function SkillsCard({
   svgs,
   children,
 }: SkillsCardProps) {
-  const { tags, error } = useLoaderData() as {
-    tags: TagType[] | null;
-    error: string | null;
-  };
+  const [{ tags, error }] = useState<LoaderState>(
+    useLoaderData() as LoaderState
+  );
   const shouldReduceMotion = useReducedMotion();
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const svgAnimation = useAnimation();

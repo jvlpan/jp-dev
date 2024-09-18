@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData, useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLenis } from "lenis/react";
@@ -7,11 +7,15 @@ import Project from "@/components/Project";
 import ProjectType from "@/types/Project";
 import classes from "./ProjectSection.module.css";
 
+interface LoaderState {
+  projects: ProjectType[] | null;
+  error: string | null;
+}
+
 export default function ProjectSection() {
-  const { projects, error } = useLoaderData() as {
-    projects: ProjectType[] | null;
-    error: string | null;
-  };
+  const [{ projects, error }] = useState<LoaderState>(
+    useLoaderData() as LoaderState
+  );
   const [searchParams, setSearchParams] = useSearchParams();
   const selectedTag = useTagStore((state) => state.selectedTag);
   const shouldScroll = useTagStore((state) => state.shouldScrollOnSelect);
@@ -43,7 +47,7 @@ export default function ProjectSection() {
   const lenis = useLenis();
   useEffect(() => {
     if (lenis && shouldScroll) {
-      lenis.scrollTo("#projects");
+      lenis.scrollTo("#projects-grid", { offset: -70 });
       setShouldScrollOnSelect(false);
     }
   }, [lenis, shouldScroll, setShouldScrollOnSelect]);
@@ -62,10 +66,7 @@ export default function ProjectSection() {
     );
   } else {
     content = (
-      <div
-        id="projects"
-        className={`nav-section ${classes["project-wrapper"]}`}
-      >
+      <div id="projects-grid">
         {selectedTag && (
           <div className={classes.filter}>
             <p>
@@ -107,7 +108,10 @@ export default function ProjectSection() {
   }
 
   return (
-    <section id="project-section" className={classes["project-section"]}>
+    <section
+      id="projects"
+      className={`nav-section ${classes["project-section"]}`}
+    >
       <h2>Projects</h2>
       {content}
     </section>

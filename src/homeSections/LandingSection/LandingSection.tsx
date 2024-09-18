@@ -5,6 +5,7 @@ import StaggeredText from "@/components/StaggeredText";
 import backgroundImg from "@/assets/background.jpg";
 import SparkleSVG from "@/assets/sparkle.svg?react";
 import classes from "./LandingSection.module.css";
+import { useLenis } from "lenis/react";
 
 const typewriterStrings = [
   "a front-end developer",
@@ -13,6 +14,7 @@ const typewriterStrings = [
 ];
 
 export default function LandingBanner() {
+  const lenis = useLenis();
   const shouldReduceMotion = useReducedMotion();
 
   let description = (
@@ -74,7 +76,12 @@ export default function LandingBanner() {
           </h1>
           {description}
         </motion.div>
-        <a href="#skills">
+        <a
+          href="#skills"
+          onClick={() => {
+            if (lenis) lenis.scrollTo("#skills", { offset: -75 });
+          }}
+        >
           <StaggeredText
             text="Take a deep dive into my work."
             wrapperClassName={classes["link-wrapper"]}

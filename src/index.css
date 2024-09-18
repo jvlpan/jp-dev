@@ -142,7 +142,6 @@ h3 {
 }
 
 .nav-section {
-  scroll-margin-top: 75px;
   position: relative;
 }
 
@@ -207,8 +206,5 @@ button:focus-visible {
   }
   h2 {
     font-size: 3rem;
-  }
-  #projects {
-    scroll-margin-top: 150px;
   }
 }

@@ -1,19 +1,23 @@
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import LandingBanner from "@/homeSections/LandingSection";
 import SkillsSection from "@/homeSections/SkillsSection";
 import ProjectSection from "@/homeSections/ProjectSection";
 import AboutSection from "@/homeSections/AboutSection";
+import { useLenis } from "lenis/react";
 
 export default function Home() {
-  useLayoutEffect(() => {
-    const hash = location.hash;
-    if (hash) {
-      const element = document.querySelector(hash);
+  const lenis = useLenis();
+  useEffect(() => {
+    if (lenis) {
+      const hash = location.hash;
+      const element = hash ? document.querySelector(hash) : null;
       if (element) {
-        element.scrollIntoView({ behavior: "instant" });
+        lenis.scrollTo(hash, { immediate: true, offset: -75 });
+      } else {
+        lenis.scrollTo(0, { immediate: true });
       }
     }
-  }, []);
+  }, [lenis]);
 
   return (
     <>

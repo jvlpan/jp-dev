@@ -7,35 +7,43 @@ export default function useScrollSpy(selector: string) {
   const location = useLocation();
 
   useEffect(() => {
-    const sections = document.querySelectorAll(selector);
-    const ids = Array.from(sections).map((section) => section.id);
-    setSectionIds(ids);
-    setActiveSection(null);
+    const handleAnimationComplete = () => {
+      const sections = document.querySelectorAll(selector);
+      const ids = Array.from(sections).map((section) => section.id);
+      setSectionIds(ids);
+      setActiveSection(null);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        let hasVisibleSection = false;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          let hasVisibleSection = false;
 
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-            hasVisibleSection = true;
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setActiveSection(entry.target.id);
+              hasVisibleSection = true;
+            }
+          });
+
+          if (!hasVisibleSection) {
+            setActiveSection(null);
           }
-        });
+        },
+        { rootMargin: "-50% 0px" }
+      );
 
-        if (!hasVisibleSection) {
-          setActiveSection(null);
-        }
-      },
-      { rootMargin: "-50% 0px" }
-    );
+      if (sections) {
+        sections.forEach((section) => observer.observe(section));
+      }
 
-    if (sections) {
-      sections.forEach((section) => observer.observe(section));
-    }
+      return () => {
+        observer.disconnect();
+      };
+    };
+
+    const timer = setTimeout(handleAnimationComplete, 500);
 
     return () => {
-      observer.disconnect();
+      clearTimeout(timer);
     };
   }, [selector, location.pathname]);
 

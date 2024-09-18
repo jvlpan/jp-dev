@@ -22,15 +22,14 @@ export default function AboutSection() {
               if (isDesktop) setIsDrawingActive(true);
             }}
             onHoverEnd={() => {
-              if (!isDesktop) setIsDrawingActive(false);
+              if (isDesktop) setIsDrawingActive(false);
             }}
             onTouchStart={(event) => {
               event.preventDefault();
               setIsDrawingActive((prevState) => !prevState);
             }}
-            onMouseDown={(event) => {
-              event.preventDefault();
-              setIsDrawingActive((prevState) => !prevState);
+            onMouseDown={() => {
+              if (!isDesktop) setIsDrawingActive((prevState) => !prevState);
             }}
           >
             <div className={classes.wrapper}>
