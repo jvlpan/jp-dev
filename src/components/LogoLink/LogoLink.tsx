@@ -1,9 +1,9 @@
 import { HashLink } from "react-router-hash-link";
 import classes from "./LogoLink.module.css";
 
-export default function LogoLink() {
+export default function LogoLink({ ...props }) {
   return (
-    <HashLink className={classes["home-link"]} to="/#">
+    <HashLink className={classes["home-link"]} to="/#" {...props}>
       <span className={classes.logo}>
         <svg
           aria-hidden="true"

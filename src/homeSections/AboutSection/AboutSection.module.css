@@ -54,7 +54,7 @@
   transition: all 700ms ease-out, background-color 700ms ease-out;
   z-index: 1;
   background-color: dark-teal-indigo;
-  border-radius: 1rem;
+  border-radius: 0.375rem;
 }
 
 .character {

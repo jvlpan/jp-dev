@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLenis } from "lenis/react";
 import {
   motion,
   useAnimation,
@@ -28,6 +29,7 @@ export default function Navbar() {
   }
 
   const isDesktop = useMediaQuery("(min-width: 768px)");
+  const lenis = useLenis();
   const hideNav = useAnimation();
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -52,12 +54,22 @@ export default function Navbar() {
         className={classes.navbar}
         id="navbar"
       >
-        <LogoLink />
+        <LogoLink
+          onClick={() => {
+            if (lenis) lenis.scrollTo("#landing");
+          }}
+        />
         <div className={classes["nav-links"]}>
           {isDesktop &&
             ids.map((id) => {
               return (
-                <HashLink key={id} to={`/#${id}`}>
+                <HashLink
+                  key={id}
+                  to={`/#${id}`}
+                  onClick={() => {
+                    if (lenis) lenis.scrollTo(`#${id}`);
+                  }}
+                >
                   <StaggeredText
                     text={id}
                     wrapperClassName={

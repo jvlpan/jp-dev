@@ -1,6 +1,6 @@
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import ReactLenis from "lenis/react";
+import ReactLenis, { useLenis } from "lenis/react";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -10,9 +10,10 @@ import classes from "./RootLayout.module.css";
 
 export default function RootLayout() {
   const location = useLocation();
-  useLayoutEffect(() => {
-    document.documentElement.scrollTo({ top: 0, left: 0, behavior: "instant" });
-  }, [location.pathname]);
+  const lenis = useLenis();
+  useEffect(() => {
+    if (lenis) lenis.scrollTo(0, { immediate: true });
+  }, [lenis, location.pathname]);
 
   const shouldReduceMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
   const body = (

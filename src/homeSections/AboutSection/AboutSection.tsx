@@ -28,6 +28,10 @@ export default function AboutSection() {
               event.preventDefault();
               setIsDrawingActive((prevState) => !prevState);
             }}
+            onMouseDown={(event) => {
+              event.preventDefault();
+              setIsDrawingActive((prevState) => !prevState);
+            }}
           >
             <div className={classes.wrapper}>
               <img

@@ -1,6 +1,7 @@
-import { useRef, useEffect } from "react";
+import { useEffect } from "react";
 import { useLoaderData, useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLenis } from "lenis/react";
 import { useTagStore } from "@/store/tagStore";
 import Project from "@/components/Project";
 import ProjectType from "@/types/Project";
@@ -39,13 +40,13 @@ export default function ProjectSection() {
       )
     : projects;
 
-  const projectsRef = useRef<HTMLDivElement>(null);
+  const lenis = useLenis();
   useEffect(() => {
-    if (projectsRef.current && shouldScroll) {
-      projectsRef.current.scrollIntoView({ behavior: "smooth" });
+    if (lenis && shouldScroll) {
+      lenis.scrollTo("#projects");
       setShouldScrollOnSelect(false);
     }
-  }, [shouldScroll, setShouldScrollOnSelect]);
+  }, [lenis, shouldScroll, setShouldScrollOnSelect]);
 
   let content;
 
@@ -64,7 +65,6 @@ export default function ProjectSection() {
       <div
         id="projects"
         className={`nav-section ${classes["project-wrapper"]}`}
-        ref={projectsRef}
       >
         {selectedTag && (
           <div className={classes.filter}>

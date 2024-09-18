@@ -45,7 +45,7 @@ export default function LandingBanner() {
   }
 
   return (
-    <section className={classes["landing-banner"]}>
+    <section className={classes["landing-banner"]} id="landing">
       <ParallaxBanner backgroundImg={backgroundImg}>
         <motion.div
           className={classes["banner-text"]}
