@@ -24,12 +24,20 @@ export default function AboutSection() {
             onHoverEnd={() => {
               if (isDesktop) setIsDrawingActive(false);
             }}
-            onTouchStart={(event) => {
-              event.preventDefault();
-              setIsDrawingActive((prevState) => !prevState);
-            }}
-            onMouseDown={() => {
-              if (!isDesktop) setIsDrawingActive((prevState) => !prevState);
+            onPointerDown={(event) => {
+              switch (event.pointerType) {
+                case "mouse":
+                  if (!isDesktop) setIsDrawingActive((prevState) => !prevState);
+                  break;
+                case "touch":
+                  event.preventDefault();
+                  setIsDrawingActive((prevState) => !prevState);
+                  break;
+                default:
+                  console.log(
+                    `pointerType ${event.pointerType} is not supported`
+                  );
+              }
             }}
           >
             <div className={classes.wrapper}>

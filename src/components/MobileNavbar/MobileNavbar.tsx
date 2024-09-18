@@ -2,6 +2,7 @@ import { HashLink } from "react-router-hash-link";
 import { motion, AnimatePresence } from "framer-motion";
 import classes from "./MobileNavbar.module.css";
 import LogoLink from "../LogoLink";
+import { useLenis } from "lenis/react";
 
 interface MobileNavbarProps {
   menuOpen: boolean;
@@ -14,6 +15,7 @@ export default function MobileNavbar({
   linkIds,
   onClickMenu,
 }: MobileNavbarProps) {
+  const lenis = useLenis();
   return (
     <AnimatePresence>
       {menuOpen && (
@@ -111,7 +113,13 @@ export default function MobileNavbar({
                         },
                       }}
                     >
-                      <HashLink to={`/#${id}`} onClick={onClickMenu}>
+                      <HashLink
+                        to={`/#${id}`}
+                        onClick={() => {
+                          if (lenis) lenis.scrollTo(`#${id}`, { offset: -75 });
+                          onClickMenu();
+                        }}
+                      >
                         {id}
                       </HashLink>
                     </motion.div>
