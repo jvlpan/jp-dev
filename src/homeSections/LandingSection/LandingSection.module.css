@@ -11,9 +11,8 @@ h2 {
 }
 
 .banner-text {
-  width: 100%;
+  width: 75%;
   height: 40vh;
-  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,7 +38,7 @@ h2 {
   position: absolute;
   width: 5rem;
   width: 5rem;
-  top: -4.75rem;
+  top: -5rem;
   right: -0.4rem;
 }
 
@@ -58,7 +57,7 @@ h2 {
 
 @media (min-width: 768px) {
   .banner-text h1 {
-    font-size: 4vw;
+    font-size: 5vw;
   }
   .banner-text h2 {
     font-size: 4vw;

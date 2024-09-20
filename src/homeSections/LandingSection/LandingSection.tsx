@@ -1,11 +1,12 @@
 import { motion, useReducedMotion } from "framer-motion";
+import { useLenis } from "lenis/react";
 import Typewriter from "typewriter-effect";
 import ParallaxBanner from "@/components/ParallaxBanner";
 import StaggeredText from "@/components/StaggeredText";
 import backgroundImg from "@/assets/background.jpg";
 import SparkleSVG from "@/assets/sparkle.svg?react";
 import classes from "./LandingSection.module.css";
-import { useLenis } from "lenis/react";
+import backgroundVideo from "@/assets/backgroundvideo.mp4";
 
 const typewriterStrings = [
   "a front-end developer",
@@ -48,7 +49,10 @@ export default function LandingBanner() {
 
   return (
     <section className={classes["landing-banner"]} id="landing">
-      <ParallaxBanner backgroundImg={backgroundImg}>
+      <ParallaxBanner
+        backgroundImg={backgroundImg}
+        backgroundVideo={backgroundVideo}
+      >
         <motion.div
           className={classes["banner-text"]}
           variants={{

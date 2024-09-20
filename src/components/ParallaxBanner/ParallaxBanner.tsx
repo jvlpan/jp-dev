@@ -9,11 +9,15 @@ import classes from "./ParallaxBanner.module.css";
 
 interface ParallaxBannerProps {
   backgroundImg: string;
+  backgroundVideo?: string;
+  className?: string;
   children: React.ReactNode;
 }
 
 export default function ParallaxBanner({
   backgroundImg,
+  backgroundVideo,
+  className,
   children,
 }: ParallaxBannerProps) {
   const shouldReduceMotion = useReducedMotion();
@@ -40,7 +44,7 @@ export default function ParallaxBanner({
   );
 
   return (
-    <div className={classes["parallax-banner"]}>
+    <div className={`${classes["parallax-banner"]} ${className}`}>
       <motion.div
         className={classes.background}
         ref={imageRef}
@@ -51,6 +55,25 @@ export default function ParallaxBanner({
           opacity: 1,
         }}
       >
+        {backgroundVideo && (
+          <motion.video
+            controls
+            muted
+            loop
+            autoPlay
+            playsInline
+            className={classes.videoBackground}
+            aria-describedby="videoDesc"
+            preload="metadata"
+            poster={backgroundImg}
+            style={{
+              borderRadius: imgCorners,
+            }}
+          >
+            <source src={backgroundVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </motion.video>
+        )}
         <motion.div
           className={classes.overlay}
           style={{ opacity: overlayOpacity }}
