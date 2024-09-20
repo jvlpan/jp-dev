@@ -1,13 +1,42 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useLenis } from "lenis/react";
+import Lightbox from "yet-another-react-lightbox";
+import Video from "yet-another-react-lightbox/plugins/video";
+import Captions from "yet-another-react-lightbox/plugins/captions";
 import { getImageUrl } from "./projectdetails.loader";
 import Markdown from "react-markdown";
 import ExternalLink from "@/components/ExternalLink";
 import Tags from "@/components/Tags";
 import ProjectType from "@/types/Project";
+import { Slide } from "yet-another-react-lightbox";
 import classes from "./ProjectDetails.module.css";
+import "yet-another-react-lightbox/styles.css";
+import "yet-another-react-lightbox/plugins/captions.css";
+
+let imageUrls: Slide[];
+
+function replaceImageUrls(description: string) {
+  return description.replace(
+    /!\[(.*?)\]\("?(.*?)"?\)/g,
+    (_, alt, fullImgName) => {
+      const [slug, image] = fullImgName.split("/");
+      const imageUrl = getImageUrl(slug, image);
+
+      if (imageUrl.endsWith("mp4")) {
+        imageUrls.push({
+          type: "video",
+          title: alt,
+          sources: [{ src: imageUrl, type: "video/mp4" }],
+        });
+      } else {
+        imageUrls.push({ src: imageUrl, alt: alt, title: alt });
+      }
+      return `![${alt}](${imageUrl})`;
+    }
+  );
+}
 
 export default function ProjectDetails() {
   const lenis = useLenis();
@@ -16,16 +45,26 @@ export default function ProjectDetails() {
   }, [lenis]);
 
   const [project] = useState<ProjectType>(useLoaderData() as ProjectType);
-  let content;
 
-  if (project.detailed_description) {
+  const updatedDescription = useMemo(() => {
+    imageUrls = [
+      { src: project.image_url, alt: project.image_alt, title: project.title },
+    ];
+    return replaceImageUrls(project.detailed_description);
+  }, [
+    project.detailed_description,
+    project.image_url,
+    project.image_alt,
+    project.title,
+  ]);
+
+  let content;
+  if (updatedDescription) {
     content = (
       <Markdown
         components={{
           img({ alt, src }) {
             if (src && src.endsWith(".mp4")) {
-              const [slug, videoName] = src.split("/");
-              const videoUrl = getImageUrl(slug, videoName);
               return (
                 <>
                   <span id="videoDesc" className="sr-only">
@@ -37,19 +76,17 @@ export default function ProjectDetails() {
                     loop
                     aria-describedby="videoDesc"
                     preload="metadata"
-                    poster={project.image_url}
+                    poster={src}
                     style={{ padding: "0.5rem" }}
                   >
-                    <source src={videoUrl} type="video/mp4" />
+                    <source src={src} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </>
               );
             }
             if (src) {
-              const [slug, imageName] = src.split("/");
-              const imageUrl = getImageUrl(slug, imageName);
-              return <img src={imageUrl} alt={alt} />;
+              return <img src={src} alt={alt} />;
             }
             return null;
           },
@@ -59,7 +96,7 @@ export default function ProjectDetails() {
           },
         }}
       >
-        {project.detailed_description}
+        {updatedDescription}
       </Markdown>
     );
   } else {
@@ -93,24 +130,36 @@ export default function ProjectDetails() {
     );
   }
 
+  const [open, setOpen] = useState(false);
+
   return (
     project && (
       <article className={classes.project}>
         <p className={classes.header}>Project Details</p>
         <h1 className={classes["project-title"]}>{project.title}</h1>
         <section className={classes.introduction}>
-          <div className={classes["image-wrapper"]}>
+          <button
+            className={classes["image-wrapper"]}
+            type="button"
+            onClick={() => setOpen(true)}
+          >
             <img
               className={classes["project-image"]}
               alt={project.image_alt}
               src={project.image_url}
             />
-          </div>
+          </button>
+          <Lightbox
+            plugins={[Video, Captions]}
+            open={open}
+            close={() => setOpen(false)}
+            slides={imageUrls}
+            className={classes.lightbox}
+          />
           <div className={classes.description}>
             <h3>Summary:</h3>
             <p>{project.description}</p>
           </div>
-
           <div className={classes.skills}>
             <h3 className={classes["call-to-filter"]}>
               See my other projects with these skills:

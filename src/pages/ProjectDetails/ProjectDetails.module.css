@@ -47,11 +47,16 @@
   break-inside: avoid;
 }
 
+.image-wrapper {
+  background-color: transparent;
+  padding: 0;
+  margin: 0.5rem;
+}
+
 .project-image {
   aspect-ratio: 16 / 9;
   width: 100%;
   border-radius: 0.6rem;
-  padding: 0.5rem;
 }
 
 .call-to-filter {
