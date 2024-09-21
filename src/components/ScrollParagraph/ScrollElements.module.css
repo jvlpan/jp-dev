@@ -1,0 +1,13 @@
+.paragraph {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.word {
+  position: relative;
+}
+
+.shadow {
+  position: absolute;
+  opacity: 30%;
+}

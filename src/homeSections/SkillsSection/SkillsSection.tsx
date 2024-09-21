@@ -1,4 +1,5 @@
 import SkillsCard from "@/components/SkillsCard";
+import RevealText from "@/components/RevealText";
 import { FaReact } from "react-icons/fa";
 import JavaScriptSVG from "@/assets/logos/javascript.svg?react";
 import PhotoshopSVG from "@/assets/logos/adobe-photoshop.svg?react";
@@ -74,7 +75,9 @@ const researchSVG = [
 export default function SkillsSection() {
   return (
     <section id="skills" className="nav-section">
-      <h2>Skills & Experience</h2>
+      <RevealText>
+        <h2>Skills & Experience</h2>
+      </RevealText>
       <div className={classes["skills-section"]}>
         <SkillsCard
           highlighted="Frontend"

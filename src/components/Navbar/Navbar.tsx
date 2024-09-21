@@ -69,6 +69,8 @@ export default function Navbar() {
                   onClick={() => {
                     if (lenis) lenis.scrollTo(`#${id}`, { offset: -75 });
                   }}
+                  aria-label={id}
+                  role="link"
                 >
                   <StaggeredText
                     text={id}

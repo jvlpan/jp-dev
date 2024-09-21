@@ -172,7 +172,17 @@ export default function Project({
             }
             className={classes["see-details-text"]}
           >
-            {slug ? "See project details" : "Project details not available"}
+            {slug ? (
+              <Link
+                to={`/projects/${slug.toString()}`}
+                title={`${title} Project Details`}
+                style={{ textDecoration: "none" }}
+              >
+                See project details
+              </Link>
+            ) : (
+              "Project details not available"
+            )}
           </motion.div>
         </div>
       </div>

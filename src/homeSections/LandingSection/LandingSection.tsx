@@ -9,9 +9,9 @@ import classes from "./LandingSection.module.css";
 /* import backgroundVideo from "@/assets/backgroundvideo.mp4"; */
 
 const typewriterStrings = [
-  "a front-end developer",
-  "a UI designer",
-  "a creative professional",
+  "front-end developer",
+  "UI designer",
+  "creative professional",
 ];
 
 export default function LandingBanner() {
@@ -31,7 +31,7 @@ export default function LandingBanner() {
         className={classes.description}
         aria-label="I'm a front-end developer, a UI designer, and a creative professional."
       >
-        I am
+        I am a
         <Typewriter
           options={{
             strings: typewriterStrings,
@@ -74,7 +74,7 @@ export default function LandingBanner() {
           animate="visible"
         >
           <h1 className={classes.title}>
-            Hi, I'm <span className={classes.highlight}>Julia Pan</span>
+            Hi, I&apos;m <span className={classes.highlight}>Julia Pan</span>
             <SparkleSVG
               className={classes.sparkles}
               title={"Decorations for featured project"}
@@ -87,6 +87,7 @@ export default function LandingBanner() {
           onClick={() => {
             if (lenis) lenis.scrollTo("#skills", { offset: -75 });
           }}
+          aria-label="Take a deep dive into my work - scroll to skills section."
         >
           <StaggeredText
             text="Take a deep dive into my work."

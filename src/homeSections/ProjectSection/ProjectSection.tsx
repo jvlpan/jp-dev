@@ -3,6 +3,7 @@ import { useLoaderData, useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLenis } from "lenis/react";
 import { useTagStore } from "@/store/tagStore";
+import RevealText from "@/components/RevealText";
 import Project from "@/components/Project";
 import ProjectType from "@/types/Project";
 import classes from "./ProjectSection.module.css";
@@ -112,7 +113,9 @@ export default function ProjectSection() {
       id="projects"
       className={`nav-section ${classes["project-section"]}`}
     >
-      <h2>Projects</h2>
+      <RevealText>
+        <h2>Projects</h2>
+      </RevealText>
       {content}
     </section>
   );

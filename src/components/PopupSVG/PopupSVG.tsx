@@ -55,6 +55,7 @@ export default function PopupSVG({
         pointerEvents: "none",
       }}
       className={className}
+      aria-hidden
     >
       {children}
     </motion.div>

@@ -143,7 +143,7 @@ h3 {
 .nav-section {
   position: relative;
 }
-.nav-section > h2 {
+.nav-section h2 {
   text-align: center;
 }
 

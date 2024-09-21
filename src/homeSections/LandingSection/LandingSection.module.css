@@ -12,17 +12,18 @@ h2 {
 
 .banner-text {
   width: 75%;
-  height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  z-index: 3;
 }
 
 .landing-banner a {
   font-size: 1.25rem;
   margin: 2rem auto;
+  z-index: 3;
 }
 
 .description {
@@ -86,6 +87,12 @@ h2 {
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  .banner-text {
+    z-index: auto;
+  }
+  .landing-banner a {
+    z-index: auto;
+  }
   .cursor {
     animation: blink 1s steps(1) infinite;
   }

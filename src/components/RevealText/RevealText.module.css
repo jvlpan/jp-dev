@@ -1,0 +1,16 @@
+@value colors: "@/colors.css";
+@value dark-green from colors;
+
+.reveal {
+  position: relative;
+  width: fit-content;
+  overflow: hidden;
+  margin: 0 auto 1rem;
+}
+
+.cover {
+  position: absolute;
+  inset: 0;
+  background: dark-green;
+  z-index: 1;
+}

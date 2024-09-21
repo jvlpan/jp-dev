@@ -20,7 +20,7 @@ export default function RootLayout() {
       }}
     >
       <Navbar />
-      <SkipNavigation id={"projects"} />
+      <SkipNavigation id="skills" />
       <AnimatePresence mode="wait">
         <motion.div key={location.pathname}>
           {!shouldReduceMotion && (

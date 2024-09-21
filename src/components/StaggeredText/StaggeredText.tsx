@@ -73,6 +73,7 @@ export default function StaggeredText({
                 whiteSpace: letter.trim() === "" ? "pre" : "nowrap",
               }}
               key={index}
+              aria-hidden
             >
               {letter}
             </motion.span>
@@ -101,6 +102,7 @@ export default function StaggeredText({
                 whiteSpace: letter.trim() === "" ? "pre" : "nowrap",
               }}
               key={index}
+              aria-hidden
             >
               {letter}
             </motion.span>
