@@ -14,14 +14,10 @@ import MobileNavbar from "../MobileNavbar/MobileNavbar";
 import LogoLink from "../LogoLink";
 import StaggeredText from "../StaggeredText";
 
-const fallbackIds = ["skills", "projects", "about"];
+const ids = ["skills", "projects", "about"];
 
 export default function Navbar() {
-  let ids = fallbackIds;
-  const { activeSection, sectionIds } = useScrollSpy(".nav-section");
-  if (sectionIds.length > 0) {
-    ids = sectionIds;
-  }
+  const { activeSection } = useScrollSpy(".nav-section");
 
   const [menuOpen, setMenuOpen] = useState(false);
   function handleToggleMenu() {

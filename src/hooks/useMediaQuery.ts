@@ -4,18 +4,14 @@ export default function useMediaQuery(mediaQuery: string) {
   const [matches, setMatches] = useState(window.matchMedia(mediaQuery).matches);
 
   useEffect(() => {
-    const mediaQueryList = window.matchMedia(mediaQuery);
-
-    function handleMediaQueryChange() {
-      setMatches(mediaQueryList.matches);
+    const media = window.matchMedia(mediaQuery);
+    if (media.matches !== matches) {
+      setMatches(media.matches);
     }
-
-    mediaQueryList.addEventListener("change", handleMediaQueryChange);
-
-    return () => {
-      mediaQueryList.removeEventListener("change", handleMediaQueryChange);
-    };
-  }, [mediaQuery]);
+    const listener = () => setMatches(media.matches);
+    window.addEventListener("resize", listener);
+    return () => window.removeEventListener("resize", listener);
+  }, [matches, mediaQuery]);
 
   return matches;
 }

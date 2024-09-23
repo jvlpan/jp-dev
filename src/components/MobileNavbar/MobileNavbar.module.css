@@ -11,6 +11,7 @@
   background-color: dark-teal-indigo;
   color: lime;
   transform-origin: top;
+  text-align: center;
   z-index: 4;
 }
 

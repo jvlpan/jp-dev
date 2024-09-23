@@ -1,5 +1,5 @@
 import { RefObject, useRef } from "react";
-import { useScroll } from "framer-motion";
+import { useReducedMotion, useScroll } from "framer-motion";
 import ScrollWord from "./ScrollWord";
 import classes from "./ScrollElements.module.css";
 
@@ -16,6 +16,8 @@ export default function ScrollParagraph({
   percentScrollStart = 0.9,
   percentScrollEnd = 0.5,
 }: ScrollParagraphProps) {
+  const shouldReduceMotion = useReducedMotion();
+
   const paragraph = useRef(null);
   const { scrollYProgress } = useScroll({
     target: target ? target : paragraph,
@@ -26,16 +28,25 @@ export default function ScrollParagraph({
   const words = text.split(" ");
 
   return (
-    <p ref={paragraph} className={classes.paragraph} aria-hidden>
-      {words.map((word, i) => {
-        const start = i / words.length;
-        const end = start + 1 / words.length;
-        return (
-          <ScrollWord key={i} progress={scrollYProgress} range={[start, end]}>
-            {word}
-          </ScrollWord>
-        );
-      })}
-    </p>
+    <>
+      {!shouldReduceMotion && (
+        <p ref={paragraph} className={classes.paragraph} aria-hidden>
+          {words.map((word, i) => {
+            const start = i / words.length;
+            const end = start + 1 / words.length;
+            return (
+              <ScrollWord
+                key={i}
+                progress={scrollYProgress}
+                range={[start, end]}
+              >
+                {word}
+              </ScrollWord>
+            );
+          })}
+        </p>
+      )}
+      <p className={shouldReduceMotion ? "" : "sr-only"}>{children}</p>
+    </>
   );
 }

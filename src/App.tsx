@@ -1,11 +1,10 @@
+import { lazy, Suspense } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "@/pages/RootLayout";
 import ErrorPage from "@/pages/Error";
 import Home, { loader as projectsLoader } from "@/pages/Home";
-import ProjectDetails, {
-  loader as projectDetailsLoader,
-} from "@/pages/ProjectDetails";
 import Cursor from "@/components/Cursor";
+const ProjectDetails = lazy(() => import("@/pages/ProjectDetails"));
 
 const router = createBrowserRouter([
   {
@@ -16,8 +15,16 @@ const router = createBrowserRouter([
       { index: true, element: <Home />, loader: projectsLoader },
       {
         path: "/projects/:id",
-        element: <ProjectDetails />,
-        loader: projectDetailsLoader,
+        element: (
+          <Suspense fallback={<p>Loading...</p>}>
+            <ProjectDetails />
+          </Suspense>
+        ),
+        loader: async (args) => {
+          const loaderFn = (await import("@/pages/ProjectDetails")).loader;
+          if (!loaderFn) return null;
+          return await loaderFn(args);
+        },
       },
     ],
   },

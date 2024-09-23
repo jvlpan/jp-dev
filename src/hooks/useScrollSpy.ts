@@ -7,43 +7,52 @@ export default function useScrollSpy(selector: string) {
   const location = useLocation();
 
   useEffect(() => {
-    const handleAnimationComplete = () => {
-      const sections = document.querySelectorAll(selector);
-      const ids = Array.from(sections).map((section) => section.id);
-      setSectionIds(ids);
-      setActiveSection(null);
+    const sections = document.querySelectorAll(selector);
+    const ids = Array.from(sections).map((section) => section.id);
+    setSectionIds(ids);
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          let hasVisibleSection = false;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        let hasVisibleSection = false;
 
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setActiveSection(entry.target.id);
-              hasVisibleSection = true;
-            }
-          });
-
-          if (!hasVisibleSection) {
-            setActiveSection(null);
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+            hasVisibleSection = true;
           }
-        },
-        { rootMargin: "-50% 0px" }
-      );
+        });
 
-      if (sections) {
-        sections.forEach((section) => observer.observe(section));
-      }
+        if (!hasVisibleSection) {
+          setActiveSection(null);
+        }
+      },
+      { rootMargin: "-50% 0px" }
+    );
 
-      return () => {
-        observer.disconnect();
-      };
-    };
+    if (sections) {
+      sections.forEach((section) => observer.observe(section));
+    }
 
-    const timer = setTimeout(handleAnimationComplete, 500);
+    const mutationObserver = new MutationObserver(() => {
+      const newSections = document.querySelectorAll(selector);
+      const newIds = Array.from(newSections).map((section) => section.id);
+      setSectionIds(newIds);
+
+      observer.disconnect();
+      newSections.forEach((section) => observer.observe(section));
+    });
+
+    const parent = document.querySelector("body");
+    if (parent) {
+      mutationObserver.observe(parent, {
+        childList: true,
+        subtree: true,
+      });
+    }
 
     return () => {
-      clearTimeout(timer);
+      observer.disconnect();
+      mutationObserver.disconnect();
     };
   }, [selector, location.pathname]);
 
