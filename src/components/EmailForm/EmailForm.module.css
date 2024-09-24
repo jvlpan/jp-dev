@@ -1,5 +1,5 @@
 @value colors: "@/colors.css";
-@value light-teal, dark-teal-indigo, dark-teal from colors;
+@value light-teal, dark-teal-indigo, dark-teal, lime from colors;
 
 .form {
   display: flex;
@@ -59,4 +59,14 @@
 
 .form p {
   margin-top: 1rem;
+}
+
+.captcha {
+  font-size: 0.75rem;
+  color: lime;
+  margin-top: 0.5rem;
+}
+
+.message {
+  margin-top: 0.5rem;
 }

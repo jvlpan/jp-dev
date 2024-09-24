@@ -113,8 +113,12 @@ export default function EmailForm({ className }: { className?: string }) {
         sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
         ref={recaptchaRef}
       />
-
-      {message && <p>{message}</p>}
+      <small className={classes.captcha}>
+        This site is protected by reCAPTCHA and the Google{" "}
+        <a href="https://policies.google.com/privacy">Privacy Policy</a> and{" "}
+        <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+      </small>
+      {message && <small className={classes.message}>{message}</small>}
       <button type="submit" disabled={isSending}>
         {isSending ? "Sending..." : "Send"}
       </button>
