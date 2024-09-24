@@ -14,7 +14,7 @@ import MobileNavbar from "../MobileNavbar/MobileNavbar";
 import LogoLink from "../LogoLink";
 import StaggeredText from "../StaggeredText";
 
-const ids = ["skills", "projects", "about"];
+const ids = ["skills", "projects", "about", "contact"];
 
 export default function Navbar() {
   const { activeSection } = useScrollSpy(".nav-section");

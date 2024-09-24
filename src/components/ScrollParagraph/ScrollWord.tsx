@@ -17,7 +17,9 @@ export default function ScrollWord({
   return (
     <span className={classes.word} aria-hidden>
       <span className={classes.shadow}>{children}&nbsp;</span>
-      <motion.span style={{ opacity: opacity }}>{children}&nbsp;</motion.span>
+      <motion.span style={{ opacity: opacity, userSelect: "none" }}>
+        {children}&nbsp;
+      </motion.span>
     </span>
   );
 }

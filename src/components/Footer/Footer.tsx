@@ -5,9 +5,8 @@ export default function Footer() {
   return (
     <footer className={classes.footer}>
       <div className={classes["call-to-action"]}>
-        <span>Connect</span> with Me
+        Say <span>Hello</span>
       </div>
-      <p>Available for hire or freelance opportunities</p>
       <div className={classes["social-buttons"]}>
         <a href="mailto:julia.vl.pan@gmail.com" type="button">
           <span>

@@ -1,13 +1,13 @@
-import useMediaQuery from "@/hooks/useMediaQuery";
 import RevealText from "@/components/RevealText";
 import ImageCard from "@/components/ImageCard";
 import photoImg from "@/assets/photo.jpg";
 import drawingImg from "@/assets/drawing.png";
 import classes from "./AboutSection.module.css";
 import ScrollParagraph from "@/components/ScrollParagraph";
+import { useLenis } from "lenis/react";
 
 export default function AboutSection() {
-  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const lenis = useLenis();
   return (
     <section id="about" className="nav-section">
       <RevealText>
@@ -22,33 +22,36 @@ export default function AboutSection() {
           hoverText={`Hello! \u2728`}
         />
         <div className={classes["text-block"]}>
-          <ScrollParagraph
-            percentScrollStart={0.9}
-            percentScrollEnd={isDesktop ? 0.7 : 0.5}
-          >
+          <ScrollParagraph percentScrollStart={0.9} percentScrollEnd={0.7}>
             I specialize in front-end development and UI design, focusing on
             creating engaging experiences through storytelling and animation. I
             like to make designs that are user-centered and accessible, but also
             unique and visually appealing.
           </ScrollParagraph>
-          <ScrollParagraph
-            percentScrollStart={0.85}
-            percentScrollEnd={isDesktop ? 0.65 : 0.45}
-          >
+          <ScrollParagraph percentScrollStart={0.8} percentScrollEnd={0.6}>
             I also enjoy learning new tools, technologies, and frameworks, or
             trying out different approaches to solve complex problems.
             That&apos;s how I built this portfolio, with a lot of
             experimentation and MDN Docs permanently open on another tab.
           </ScrollParagraph>
-          <ScrollParagraph
-            percentScrollStart={0.8}
-            percentScrollEnd={isDesktop ? 0.6 : 0.4}
-          >
-            I&apos;m currently on the lookout for part-time or full-time
-            opportunities. If you need someone with experience in both design
-            and development, I&apos;d love to talk and see if we can work
-            together! Let&apos;s chat! &#x2728;
+          <ScrollParagraph percentScrollStart={0.7} percentScrollEnd={0.5}>
+            Whether it&apos;s messing around with CSS animations, or trying out
+            a new JavaScript library, I love applying my skills and seeing how
+            little tweaks can make a big difference. I&apos;m all about being
+            adaptable and finding new ways to overcome whatever obstacles arise!
           </ScrollParagraph>
+          <p>
+            Interested in working with me?{" "}
+            <a
+              href="#contact"
+              onClick={() => {
+                if (lenis) lenis.scrollTo("#contact", { offset: -75 });
+              }}
+            >
+              Let&apos;s chat!
+            </a>{" "}
+            &#x2728;
+          </p>
         </div>
       </div>
     </section>

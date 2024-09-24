@@ -3,6 +3,7 @@ import LandingBanner from "@/homeSections/LandingSection";
 import SkillsSection from "@/homeSections/SkillsSection";
 import ProjectSection from "@/homeSections/ProjectSection";
 import AboutSection from "@/homeSections/AboutSection";
+import ContactSection from "@/homeSections/ContactSection";
 import { useLenis } from "lenis/react";
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
       <SkillsSection />
       <ProjectSection />
       <AboutSection />
+      <ContactSection />
     </>
   );
 }

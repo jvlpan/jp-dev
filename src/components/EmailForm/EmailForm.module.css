@@ -1,0 +1,62 @@
+@value colors: "@/colors.css";
+@value light-teal, dark-teal-indigo, dark-teal from colors;
+
+.form {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.form input {
+  width: 100%;
+  height: 2.5rem;
+  padding: 0.5rem;
+  outline: none;
+  border-radius: 0.25rem;
+  transition: border 200ms linear;
+  background-color: dark-teal-indigo;
+  color: light-teal;
+  border: 2px solid dark-teal;
+}
+
+.form input::placeholder {
+  color: light-teal;
+  opacity: 0.5;
+}
+
+.form input:focus {
+  border: 2px solid light-teal;
+}
+
+.form textarea {
+  resize: vertical;
+  min-width: 100%;
+  padding: 0.5rem;
+  outline: none;
+  border-radius: 0.25rem;
+  transition: border 200ms linear;
+  background-color: dark-teal-indigo;
+  color: light-teal;
+  border: 2px solid dark-teal;
+}
+
+.form textarea::placeholder {
+  color: light-teal;
+  opacity: 0.5;
+}
+
+.form textarea:focus {
+  border: 2px solid light-teal;
+}
+
+.form label {
+  margin-top: 1rem;
+}
+
+.form button {
+  margin-top: 1rem;
+}
+
+.form p {
+  margin-top: 1rem;
+}
