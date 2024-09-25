@@ -139,7 +139,12 @@ export default function Project({
           >
             {title}
             <div className={classes["project-image-container"]}>
-              <img className={classes["project-image"]} alt={alt} src={img} />
+              <img
+                className={classes["project-image"]}
+                loading="lazy"
+                alt={alt}
+                src={img}
+              />
             </div>
           </Link>
         ) : (

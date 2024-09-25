@@ -51,11 +51,13 @@ a {
 @font-face {
   font-family: "Space Grotesk";
   src: url("./assets/fonts/SpaceGrotesk.ttf");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Work Sans";
   src: url("./assets/fonts/WorkSans.ttf");
+  font-display: swap;
 }
 
 :root {
@@ -63,7 +65,7 @@ a {
   --color-dark-teal-indigo: #0e1e1b;
   --color-lime: #accd67;
 
-  font-family: "Space Grotesk";
+  font-family: "Space Grotesk", Tahoma, Verdana, sans-serif;
   line-height: 1.6;
   font-weight: 400;
 
@@ -77,7 +79,7 @@ a {
 }
 
 :is(h1, h2, h3, h4, h5, h6) {
-  font-family: "Work Sans";
+  font-family: "Work Sans", Tahoma, Verdana, sans-serif;
 }
 
 body {

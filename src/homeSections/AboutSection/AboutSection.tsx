@@ -2,7 +2,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useLenis } from "lenis/react";
 import RevealText from "@/components/RevealText";
 import ImageCard from "@/components/ImageCard";
-import photoImg from "@/assets/photo.jpg";
+import photoImg from "@/assets/photo.webp";
 import drawingImg from "@/assets/drawing.webp";
 import classes from "./AboutSection.module.css";
 

@@ -3,7 +3,7 @@ import { useLenis } from "lenis/react";
 import Typewriter from "typewriter-effect";
 import ParallaxBanner from "@/components/ParallaxBanner";
 import StaggeredText from "@/components/StaggeredText";
-import backgroundImg from "@/assets/background.jpg";
+import backgroundImg from "@/assets/background.webp";
 import SparkleSVG from "@/assets/sparkle.svg?react";
 import classes from "./LandingSection.module.css";
 import backgroundVideo from "@/assets/background.mp4";
