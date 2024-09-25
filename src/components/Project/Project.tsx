@@ -72,7 +72,7 @@ export default function Project({
     );
   } else if (link) {
     const linkText =
-      category === "website" ? "Visit the project" : "Learn more";
+      category === "website" ? "Visit the project" : "View research overview";
     linkContent = (
       <ExternalLink
         link={link}
