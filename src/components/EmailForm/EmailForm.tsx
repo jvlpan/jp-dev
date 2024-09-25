@@ -7,6 +7,7 @@ export default function EmailForm({ className }: { className?: string }) {
   const formRef = useRef<HTMLFormElement>(null);
   const recaptchaRef = useRef<ReCAPTCHA | null>(null);
 
+  const [captchaEnabled, setCaptchaEnabled] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
@@ -101,6 +102,7 @@ export default function EmailForm({ className }: { className?: string }) {
         name="user_email"
         placeholder="example@email.com"
         required
+        onFocus={() => setCaptchaEnabled(true)}
       />
       <label>Message</label>
       <textarea
@@ -108,11 +110,14 @@ export default function EmailForm({ className }: { className?: string }) {
         placeholder="What can I help you with?"
         required
       />
-      <ReCAPTCHA
-        size="invisible"
-        sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
-        ref={recaptchaRef}
-      />
+      {captchaEnabled && (
+        <ReCAPTCHA
+          size="invisible"
+          sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+          ref={recaptchaRef}
+        />
+      )}
+
       <small className={classes.captcha}>
         This site is protected by reCAPTCHA and the Google{" "}
         <a href="https://policies.google.com/privacy">Privacy Policy</a> and{" "}

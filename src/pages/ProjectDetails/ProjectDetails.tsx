@@ -158,7 +158,7 @@ export default function ProjectDetails() {
             className={classes.lightbox}
           />
           <div className={classes.description}>
-            <h3>Summary:</h3>
+            <h2>Summary</h2>
             <p>{project.description}</p>
           </div>
           <div className={classes.skills}>
@@ -169,7 +169,10 @@ export default function ProjectDetails() {
           </div>
           {linkContent}
         </section>
-        <section className={classes.markdown}>{content}</section>
+        <section className={classes.markdown}>
+          <h2>More About This Project</h2>
+          {content}
+        </section>
         <Link to="/" className={classes["link-to-home"]}>
           Return to Home
         </Link>

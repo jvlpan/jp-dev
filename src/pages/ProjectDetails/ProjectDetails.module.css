@@ -13,10 +13,20 @@
   text-align: left;
 }
 
-.project h2,
+.project h2 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 1.5;
+}
+
 .project h3 {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.5;
 }
 
 .header {
@@ -81,7 +91,7 @@ blockquote {
   background-color: dark-green-teal;
   border-left: 10px solid lime;
   padding: 1rem;
-  margin: 2rem 0;
+  margin: 1rem 0;
 }
 
 .link-to-home {
@@ -92,7 +102,7 @@ blockquote {
 
 .video-container {
   position: relative;
-  width: 80%;
+  width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   padding: 0.5rem;
