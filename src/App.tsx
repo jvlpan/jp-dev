@@ -3,7 +3,6 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "@/pages/RootLayout";
 import ErrorPage from "@/pages/Error";
 import Home, { loader as projectsLoader } from "@/pages/Home";
-import Cursor from "@/components/Cursor";
 const ProjectDetails = lazy(() => import("@/pages/ProjectDetails"));
 
 const router = createBrowserRouter([
@@ -31,12 +30,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return (
-    <>
-      <Cursor />
-      <RouterProvider router={router} />
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

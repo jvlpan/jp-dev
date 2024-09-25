@@ -1,9 +1,9 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import LandingBanner from "@/homeSections/LandingSection";
-import SkillsSection from "@/homeSections/SkillsSection";
 import ProjectSection from "@/homeSections/ProjectSection";
-import AboutSection from "@/homeSections/AboutSection";
-import ContactSection from "@/homeSections/ContactSection";
+const SkillsSection = lazy(() => import("@/homeSections/SkillsSection"));
+const AboutSection = lazy(() => import("@/homeSections/AboutSection"));
+const ContactSection = lazy(() => import("@/homeSections/ContactSection"));
 import { useLenis } from "lenis/react";
 
 export default function Home() {
@@ -23,10 +23,55 @@ export default function Home() {
   return (
     <>
       <LandingBanner />
-      <SkillsSection />
+      <Suspense
+        fallback={
+          <p
+            id="#skills"
+            style={{
+              textAlign: "center",
+              fontSize: "1.25rem",
+              padding: "0.25rem",
+            }}
+          >
+            Loading...
+          </p>
+        }
+      >
+        <SkillsSection />
+      </Suspense>
       <ProjectSection />
-      <AboutSection />
-      <ContactSection />
+      <Suspense
+        fallback={
+          <p
+            id="about"
+            style={{
+              textAlign: "center",
+              fontSize: "1.25rem",
+              padding: "0.25rem",
+            }}
+          >
+            Loading...
+          </p>
+        }
+      >
+        <AboutSection />
+      </Suspense>
+      <Suspense
+        fallback={
+          <p
+            id="contact"
+            style={{
+              textAlign: "center",
+              fontSize: "1.25rem",
+              padding: "0.25rem",
+            }}
+          >
+            Loading...
+          </p>
+        }
+      >
+        <ContactSection />
+      </Suspense>
     </>
   );
 }

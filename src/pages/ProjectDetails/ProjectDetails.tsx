@@ -66,7 +66,7 @@ export default function ProjectDetails() {
           img({ alt, src }) {
             if (src && src.endsWith(".mp4")) {
               return (
-                <>
+                <div className={classes["video-container"]}>
                   <span id="videoDesc" className="sr-only">
                     {alt}
                   </span>
@@ -78,11 +78,12 @@ export default function ProjectDetails() {
                     preload="metadata"
                     poster={src}
                     style={{ padding: "0.5rem" }}
+                    className={classes.video}
                   >
                     <source src={src} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
-                </>
+                </div>
               );
             }
             if (src) {
