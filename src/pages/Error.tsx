@@ -16,7 +16,14 @@ export default function ErrorPage() {
   }
 
   return (
-    <main style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+    <main
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "1rem",
+      }}
+    >
       <Navbar />
       <h1>{title}</h1>
       <p>{message}</p>

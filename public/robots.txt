@@ -1,0 +1,22 @@
+# robots.txt for juliapan.dev
+# Block known scrapers and bots
+User-agent: AhrefsBot
+Disallow: /
+User-agent: MJ12bot
+Disallow: /
+User-agent: SEMrushBot
+Disallow: /
+User-agent: Baiduspider
+Disallow: /
+User-agent: YandexBot
+Disallow: /
+User-agent: BLEXBot
+Disallow: /
+User-agent: dotbot
+Disallow: /
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https:/juliapan.dev/sitemap.xml
