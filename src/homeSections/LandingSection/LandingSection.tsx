@@ -6,7 +6,7 @@ import StaggeredText from "@/components/StaggeredText";
 import backgroundImg from "@/assets/background.jpg";
 import SparkleSVG from "@/assets/sparkle.svg?react";
 import classes from "./LandingSection.module.css";
-/* import backgroundVideo from "@/assets/backgroundvideo.mp4"; */
+import backgroundVideo from "@/assets/background.mp4";
 
 const typewriterStrings = [
   "front-end developer",
@@ -51,9 +51,7 @@ export default function LandingBanner() {
     <section className={classes["landing-banner"]} id="landing">
       <ParallaxBanner
         backgroundImg={backgroundImg}
-        /* 
-        backgroundVideo={backgroundVideo} 
-        */
+        backgroundVideo={backgroundVideo}
       >
         <motion.div
           className={classes["banner-text"]}

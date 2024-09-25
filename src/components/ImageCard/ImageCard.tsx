@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, MotionProps } from "framer-motion";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import classes from "./ImageCard.module.css";
 
-interface ImageCardProps {
+interface ImageCardProps extends MotionProps {
   photoImg: string;
   drawingImg: string;
   photoAlt: string;
@@ -17,6 +17,7 @@ export default function ImageCard({
   photoAlt,
   drawingAlt,
   hoverText,
+  ...props
 }: ImageCardProps) {
   const [isDrawingActive, setIsDrawingActive] = useState(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
@@ -46,6 +47,7 @@ export default function ImageCard({
             console.log(`pointerType ${event.pointerType} is not supported`);
         }
       }}
+      {...props}
     >
       <div className={classes.wrapper}>
         <img src={photoImg} alt={photoAlt} className={classes["cover-image"]} />

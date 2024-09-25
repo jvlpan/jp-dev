@@ -1,12 +1,14 @@
+import { motion, useReducedMotion } from "framer-motion";
+import { useLenis } from "lenis/react";
 import RevealText from "@/components/RevealText";
 import ImageCard from "@/components/ImageCard";
 import photoImg from "@/assets/photo.jpg";
 import drawingImg from "@/assets/drawing.webp";
 import classes from "./AboutSection.module.css";
-import { useLenis } from "lenis/react";
 
 export default function AboutSection() {
   const lenis = useLenis();
+  const shouldReduceMotion = useReducedMotion();
   return (
     <section id="about" className="nav-section">
       <RevealText>
@@ -19,8 +21,47 @@ export default function AboutSection() {
           photoAlt="Headshot of Julia Pan from the shoulders up, smiling"
           drawingAlt="A stylized self-portrait drawing of Julia Pan with a pastel rainbow"
           hoverText={`Hello! \u2728`}
+          variants={{
+            hidden: {
+              opacity: 0,
+              x: shouldReduceMotion ? 0 : "-25%",
+            },
+            visible: {
+              opacity: 1,
+              x: 0,
+              transition: {
+                type: "spring",
+                duration: 1,
+                delay: 0.2,
+              },
+            },
+          }}
+          viewport={{ once: true, amount: 0.15 }}
+          initial="hidden"
+          exit="hidden"
+          whileInView="visible"
         />
-        <div className={classes["text-block"]}>
+        <motion.div
+          className={classes["text-block"]}
+          variants={{
+            hidden: {
+              opacity: 0,
+              x: shouldReduceMotion ? 0 : "-50%",
+            },
+            visible: {
+              opacity: 1,
+              x: 0,
+              transition: {
+                type: "spring",
+                duration: 1,
+              },
+            },
+          }}
+          viewport={{ once: true, amount: 0.15 }}
+          initial="hidden"
+          exit="hidden"
+          whileInView="visible"
+        >
           <p>
             I specialize in front-end development and UI design, focusing on
             creating engaging experiences through storytelling and animation. I
@@ -55,7 +96,7 @@ export default function AboutSection() {
             </a>{" "}
             &#x2728;
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

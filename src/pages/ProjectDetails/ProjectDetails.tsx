@@ -76,7 +76,6 @@ export default function ProjectDetails() {
                     loop
                     aria-describedby="videoDesc"
                     preload="metadata"
-                    poster={src}
                     style={{ padding: "0.5rem" }}
                     className={classes.video}
                   >

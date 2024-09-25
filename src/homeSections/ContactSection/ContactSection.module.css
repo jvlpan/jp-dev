@@ -13,7 +13,7 @@
 
 .container p {
   font-size: 1.125rem;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .form {
@@ -40,6 +40,6 @@
     width: 100%;
   }
   .container p {
-    width: 30%;
+    width: 25%;
   }
 }
