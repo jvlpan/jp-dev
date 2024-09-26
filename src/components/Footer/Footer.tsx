@@ -36,9 +36,7 @@ export default function Footer() {
           </span>
           <span className="sr-only">LinkedIn</span>
         </a>
-        {/*
-        - Icon for Github link, coming soon
-        <a href="#" type="button">
+        <a href="https://github.com/jvlpan/" type="button">
           <span>
             <svg
               aria-hidden="true"
@@ -50,8 +48,7 @@ export default function Footer() {
             </svg>
           </span>
           <span className="sr-only">GitHub</span>
-        </a> 
-        */}
+        </a>
       </div>
       <div>
         &copy; 2024{" "}

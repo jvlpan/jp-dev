@@ -93,13 +93,13 @@
   text-align: left;
 }
 
-.skills-list {
+.text-block .skills-list {
   justify-content: center;
   gap: 0.25rem;
   margin: 0.75rem;
 }
 
-.skills-list button {
+.text-block .skills-list button {
   padding: 0 0.25rem;
   font-weight: 400;
 }
