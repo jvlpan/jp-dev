@@ -1,5 +1,5 @@
 import { HashLink } from "react-router-hash-link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import classes from "./MobileNavbar.module.css";
 import LogoLink from "../LogoLink";
 import { useLenis } from "lenis/react";
@@ -10,37 +10,63 @@ interface MobileNavbarProps {
   onClickMenu: () => void;
 }
 
+const menuVariants = {
+  hidden: {
+    y: "-100%",
+  },
+  visible: {
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: [0.12, 0, 0.39, 0],
+    },
+  },
+  exit: {
+    y: "-100%",
+    transition: {
+      delay: 0.4,
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+const reducedMotionMenuVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+      ease: [0.12, 0, 0.39, 0],
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      delay: 0.4,
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
 export default function MobileNavbar({
   menuOpen,
   linkIds,
   onClickMenu,
 }: MobileNavbarProps) {
   const lenis = useLenis();
+  const shouldReduceMotion = useReducedMotion();
   return (
     <AnimatePresence>
       {menuOpen && (
         <motion.div
           className={classes["mobile-overlay"]}
-          variants={{
-            hidden: {
-              y: "-100%",
-            },
-            visible: {
-              y: 0,
-              transition: {
-                duration: 0.3,
-                ease: [0.12, 0, 0.39, 0],
-              },
-            },
-            exit: {
-              y: "-100%",
-              transition: {
-                delay: 0.4,
-                duration: 0.5,
-                ease: [0.22, 1, 0.36, 1],
-              },
-            },
-          }}
+          variants={
+            shouldReduceMotion ? reducedMotionMenuVariants : menuVariants
+          }
           initial="hidden"
           animate="visible"
           exit="exit"
@@ -87,9 +113,9 @@ export default function MobileNavbar({
                   },
                 },
               }}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
+              initial={shouldReduceMotion ? "" : "hidden"}
+              animate={shouldReduceMotion ? "" : "visible"}
+              exit={shouldReduceMotion ? "" : "hidden"}
             >
               {linkIds.map((id) => {
                 return (

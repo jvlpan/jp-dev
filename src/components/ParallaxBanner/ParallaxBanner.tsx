@@ -55,12 +55,12 @@ export default function ParallaxBanner({
           opacity: 1,
         }}
       >
-        {backgroundVideo && (
+        {backgroundVideo && !shouldReduceMotion && (
           <motion.video
             controls
             muted
             loop
-            autoPlay
+            autoPlay={!shouldReduceMotion}
             playsInline
             className={classes.videoBackground}
             aria-describedby="videoDesc"
