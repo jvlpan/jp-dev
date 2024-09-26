@@ -86,7 +86,14 @@ export default function ProjectDetails() {
               );
             }
             if (src) {
-              return <img src={src} alt={alt} />;
+              return (
+                <img
+                  loading="lazy"
+                  src={src}
+                  alt={alt}
+                  style={{ padding: "0.5rem" }}
+                />
+              );
             }
             return null;
           },
