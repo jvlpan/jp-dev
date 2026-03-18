@@ -8,7 +8,7 @@ export default function Footer() {
         Say <span>Hello</span>
       </div>
       <div className={classes["social-buttons"]}>
-        <a href="mailto:julia.vl.pan@gmail.com" type="button">
+        <a href="mailto:contact@juliapan.dev" type="button">
           <span>
             <svg
               aria-hidden="true"
@@ -36,7 +36,8 @@ export default function Footer() {
           </span>
           <span className="sr-only">LinkedIn</span>
         </a>
-        <a href="https://github.com/jvlpan/" type="button">
+
+        {/* <a href="https://github.com/jvlpan/" type="button">
           <span>
             <svg
               aria-hidden="true"
@@ -48,7 +49,7 @@ export default function Footer() {
             </svg>
           </span>
           <span className="sr-only">GitHub</span>
-        </a>
+        </a> */}
       </div>
       <div>
         &copy; 2024{" "}
